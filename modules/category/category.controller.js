@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+
 router.get("/category", async (req, res) => {
   const { q } = req.query;
   const dish = await Dish.find({ type: q });
