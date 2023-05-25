@@ -32,6 +32,8 @@ async function getCategory() {
   const dish = await Dish.find({ type: q });
 }
 
+
+
 module.exports = {
   createDishAsync,
   deleteDishById,

@@ -13,11 +13,6 @@ router.get("/menu", async (req, res) => {
   res.render("menu.html", { dish });
 });
 
-router.post("/menu", async (req, res) => {
-  console.log("menu.controller POST /menu req.body:", req.body);
-  await menu.createDishAsync(req.body);
-  res.redirect(`/admin/products`);
-});
 
 router.get("/menu/:id", async (req, res) => {
   console.log("menu.controller GET /menu/:id req.params.id:", req.params.id);
