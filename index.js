@@ -6,6 +6,7 @@ const ejs = require("ejs");
 const mongodb = require("./modules/mongodb/mongodb.service");
 const menu = require("./modules/menu/menu.controller");
 const category = require("./modules/category/category.controller");
+const user = require("./modules/user/user.controller");
 const cart = require("./modules/cart/cart.controller");
 
 const { engine } = require("express-handlebars");
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", menu);
 app.use("/category", category);
+app.use("/user", user);
 app.use("/cart", cart);
 
 app.listen(3000, (req, res) => {
