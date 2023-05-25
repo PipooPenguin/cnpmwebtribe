@@ -1,10 +1,10 @@
 const express = require("express");
-const user = require("./user.service");
+const payment = require("./payment.service");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  user.get();
-  res.send("OK");
+  payment.get();
+  res.send("payment ok");
 });
 
 module.exports = router;

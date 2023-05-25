@@ -1,10 +1,10 @@
 const express = require("express");
-const user = require("./user.service");
+const order = require("./order.service");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  user.get();
-  res.send("OK");
+  order.get();
+  res.send("order ok");
 });
 
 module.exports = router;

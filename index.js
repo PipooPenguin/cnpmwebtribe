@@ -8,6 +8,8 @@ const menu = require("./modules/menu/menu.controller");
 const category = require("./modules/category/category.controller");
 const user = require("./modules/user/user.controller");
 const cart = require("./modules/cart/cart.controller");
+const order = require("./modules/order/order.controller");
+const payment = require("./modules/payment/payment.controller");
 
 const { engine } = require("express-handlebars");
 const methodOverride = require("method-override");
@@ -24,11 +26,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
-
 app.use("/", menu);
 app.use("/category", category);
 app.use("/user", user);
 app.use("/cart", cart);
+app.use("/order", order);
+app.use("/payment", payment);
 
 app.listen(3000, (req, res) => {
   console.log("App is listening on port 3000");
