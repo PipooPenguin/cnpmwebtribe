@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>placed orders</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../css/admin_styles.css">
+
+</head>
+<body>
+
+  <!--header section-->
+ <%- include('../partials/headersadminsection.ejs')%>
+ <!-- admin dashboard section starts  -->
+
+<!-- placed orders section starts  -->
+
+<section class="placed-orders">
+
+   <h1 class="heading">placed orders</h1>
+
+   <div class="box-container">
+
+   
+   <div class="box">
+      <p> user id : <span>user_id</span> </p>
+      <p> placed on : <span>placed_on</span> </p>
+      <p> name : <span>name</p>
+      <p> email : <span>email</span> </p>
+      <p> number : <span>number</span> </p>
+      <p> address : <span>address</p>
+      <p> total products : <span>total_products</p>
+      <p> total price : <span>$total_price/-</span> </p>
+      <p> payment method : method'</p>
+      <form action="" method="POST">
+         <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
+         <select name="payment_status" class="drop-down">
+            <option value="" selected disabled>payment_status</option>
+            <option value="pending">pending</option>
+            <option value="completed">completed</option>
+         </select>
+         <div class="flex-btn">
+            <input type="submit" value="update" class="btn" name="update_payment">
+            <a href="" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+         </div>
+      </form>
+   </div>
+   
+
+   </div>
+
+</section>

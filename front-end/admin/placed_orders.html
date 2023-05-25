@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>placed orders</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../css/admin_styles.css">
+
+</head>
+<body>
+
+    <header class="header">
+
+        <section class="flex">
+     
+           <a href="dashboard.html" class="logo">Admin<span>Panel</span></a>
+     
+           <nav class="navbar">
+              <a href="dashboard.html">home</a>
+              <a href="products.html">products</a>
+              <a href="placed_orders.html">orders</a>
+              <a href="admin_accounts.html">admins</a>
+              <a href="users_accounts.html">users</a>
+              <a href="messages.html">messages</a>
+           </nav>
+     
+           <div class="icons">
+              <div id="menu-btn" class="fas fa-bars"></div>
+              <div id="user-btn" class="fas fa-user"></div>
+           </div>
+     
+           <div class="profile">
+             
+              <p>name</p>
+              <a href="update_profile.html" class="btn">update profile</a>
+              <div class="flex-btn">
+                 <a href="admin_login.html" class="option-btn">login</a>
+                 <a href="register_admin.html" class="option-btn">register</a>
+              </div>
+              <a href="" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
+           </div>
+     
+        </section>
+     
+     </header>
+
+<!-- placed orders section starts  -->
+
+<section class="placed-orders">
+
+   <h1 class="heading">placed orders</h1>
+
+   <div class="box-container">
+
+   
+   <div class="box">
+      <p> user id : <span>user_id</span> </p>
+      <p> placed on : <span>placed_on</span> </p>
+      <p> name : <span>name</p>
+      <p> email : <span>email</span> </p>
+      <p> number : <span>number</span> </p>
+      <p> address : <span>address</p>
+      <p> total products : <span>total_products</p>
+      <p> total price : <span>$total_price/-</span> </p>
+      <p> payment method : method'</p>
+      <form action="" method="POST">
+         <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
+         <select name="payment_status" class="drop-down">
+            <option value="" selected disabled>payment_status</option>
+            <option value="pending">pending</option>
+            <option value="completed">completed</option>
+         </select>
+         <div class="flex-btn">
+            <input type="submit" value="update" class="btn" name="update_payment">
+            <a href="" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+         </div>
+      </form>
+   </div>
+   
+
+   </div>
+
+</section>
