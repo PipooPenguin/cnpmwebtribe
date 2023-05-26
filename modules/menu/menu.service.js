@@ -5,41 +5,27 @@ async function getMenuAsync() {
   return dish;
 }
 
-async function createDishAsync(dish) {
-  console.log("service create dish", dish);
-  const newDish = new Dish(dish);
-  console.log(newDish);
-  await newDish.save(newDish);
-  return 0;
-}
-
 async function getDishByIdAsync(id) {
   const dish = await Dish.findById(id);
   return dish;
 }
 
-async function updateDishById(id, data) {
-  //TODO: verify data to update
-  const dish = await Dish.findByIdAndUpdate(id, { ...data });
-}
-
-async function deleteDishById(id) {
-  await Dish.findByIdAndDelete(id);
-}
-
-async function getCategory() {
+async function getCategory(req) {
   const { q } = req.query;
   const dish = await Dish.find({ type: q });
+  return dish;
 }
 
-
+async function getSearchDishes(req) {
+  const {q}= req.query;
+    const dish = await Dish.find({ title: { $regex: `${q}` , $options: 'i' } });
+    return dish;
+}
 
 module.exports = {
-  createDishAsync,
-  deleteDishById,
   getDishByIdAsync,
   getDishByIdAsync,
   getMenuAsync,
-  updateDishById,
   getCategory,
+  getSearchDishes,
 };

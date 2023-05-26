@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const dish = await menu.getMenuAsync();
-  res.render("home.html", { dish });
+  const top3dish = dish.slice(0, 3);
+  res.render("home.html", { top3dish });
 });
 
 router.get("/menu", async (req, res) => {
@@ -13,40 +14,27 @@ router.get("/menu", async (req, res) => {
   res.render("menu.html", { dish });
 });
 
-
 router.get("/menu/:id", async (req, res) => {
   console.log("menu.controller GET /menu/:id req.params.id:", req.params.id);
   const dish = await menu.getDishByIdAsync(req.params.id);
   res.render("quick_view.html", { dish });
 });
 
-router.get("/menu/:id/edit", async (req, res) => {
-  console.log(
-    "menu.controller GET /menu/:id/edit req.params.id:",
-    req.params.id
-  );
-  const dish = await menu.getDishByIdAsync(req.params.id);
-  res.render("./admin/update_product.html", { dish });
-});
-
-router.put("/menu/:id", async (req, res) => {
-  console.log("menu.controller PUT /menu/:id req.params.id:", req.params.id);
-  const { id } = req.params;
-  await menu.updateDishById(id, req.body);
-  res.redirect("/admin/products");
-});
-
-router.delete("/menu/:id", async (req, res) => {
-  console.log("menu.controller DELETE /menu/:id req.params.id:", req.params.id);
-  const { id } = req.params;
-  await menu.deleteDishById(id);
-  res.redirect("/admin/products");
-});
-
 router.get("/category", async (req, res) => {
   console.log("menu.controller GET /category req.query", req.query);
-  const dish = await menu.getCategory(req.query);
+  const dish = await menu.getCategory(req);
   res.render("category.html", { dish });
+});
+
+router.get("/:nav", (req, res) => {
+  console.log("menu.controller router.get /:nav", req.params);
+  res.render(`${req.params.nav}.html`);
+});
+
+router.get("/items/search", async (req, res) => {
+  console.log("menu.controller router.get /search", req.query);
+  const dish = await menu.getSearchDishes(req);
+  res.render("menu.html", {dish});
 });
 
 module.exports = router;

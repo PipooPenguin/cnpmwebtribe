@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>SEARCH</title>
 
-        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
     </head>
@@ -14,23 +14,17 @@
     <body>
         <!--header section-->
         <%- include('partials/headersection'); %>
-        <!--header section-->
 
-        <!--search section-->
+             
 
-        <section class="search-form">
-            <form method="post" action="">
-                <input type="text" name="search_box" placeholder="search here..." class="box">
-                <button type="submit" name="search_btn" class="fas fa-search"></button>
-            </form>
-        </section>
-
-        <!--search section-->
-
-        <section class="products" style="min-height: 100vh;padding-top: 0;">
-
-        </section>
-
+            <section class="search-form">
+             <form action="items/search">
+                  <input type="search" id="mySearch" name="q" placeholder="search here..." class="box"  />
+                  <button class="fas fa-search"></button>
+              </form>
+            </section>
+        <!--search section--
+       
 
 
 
