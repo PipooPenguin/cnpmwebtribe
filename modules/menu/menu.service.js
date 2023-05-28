@@ -10,9 +10,8 @@ async function getDishByIdAsync(id) {
   return dish;
 }
 
-async function getCategory(req) {
-  const { q } = req.query;
-  const dish = await Dish.find({ type: q });
+async function getCategory(query) {
+  const dish = await Dish.find({ type: query });
   return dish;
 }
 

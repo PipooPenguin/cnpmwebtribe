@@ -1,251 +1,217 @@
 <!DOCTYPE ejs>
 <ejs lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title>HOME</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>HOME</title>
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <body>
+    <!--header section-->
+    <%- include('partials/headersection'); %>
+    <!--header section-->
 
-    </head>
+    <!--hero section-->
 
-    <body>
-        <!--header section-->
-        <%- include('partials/headersection'); %>
-        <!--header section-->
-
-
-        <!--hero section-->
-        
-        <section class="hero">
-
-            <div class="swiper hero-slider">
-
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide slide">
-                        <div class="content">
-                            <span>order online</span>
-                            <h3>delicious beefsteak</h3>
-                            <a href="/menu" class="btn">see menus</a>
-                        </div>
-                        <div class="image">
-                            <img src="images/pngegg.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide slide">
-                        <div class="content">
-                            <span>order online</span>
-                            <h3>yummy pasta</h3>
-                            <a href="/menu" class="btn">see menus</a>
-                        </div>
-                        <div class="image">
-                            <img src="images/pasta.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide slide">
-                        <div class="content">
-                            <span>order online</span>
-                            <h3>tasty pizza</h3>
-                            <a href="/menu" class="btn">see menus</a>
-                        </div>
-                        <div class="image">
-                            <img src="images/pizza.png" alt="">
-                        </div>
-                    </div>
-                    
-                    <div class="swiper-slide slide">
-                        <div class="content">
-                            <span>order online</span>
-                            <h3>chezzy hamburger</h3>
-                            <a href="/menu" class="btn">see menus</a>
-                        </div>
-                        <div class="image">
-                            <img src="images/hamburger.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide slide">
-                        <div class="content">
-                            <span>order online</span>
-                            <h3>fried chicken</h3>
-                            <a href="/menu" class="btn">see menus</a>
-                        </div>
-                        <div class="image">
-                            <img src="images/friedchicken.png" alt="">
-                        </div>
-                    </div>
-
-
-
-
-
-
-                    
-
-                </div>
-
-                <div class="swiper-pagination"></div>
-
+    <section class="hero">
+      <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>order online</span>
+              <h3>delicious beefsteak</h3>
+              <a href="/menu" class="btn">see menus</a>
             </div>
-
-        </section>
-
-
-
-        <!--hero section-->
-
-
-
-        <!--category section-->
-
-        <section class="category">
-
-            <h1 class="title">
-                food category
-            </h1>
-
-            <div class="box-container">
-
-                <a href="/category?q=fastfood" class="box">
-                    <img src="images/fast-food.png" alt="">
-                    <h3>fast food</h3>
-                </a>
-
-                <a href="/category?q=maindish" class="box">
-                    <img src="images/main-dish.png" alt="">
-                    <h3>main dish</h3>
-                </a>
-
-                <a href="/category?q=drinks" class="box">
-                    <img src="images/drinks.png" alt="">
-                    <h3>drinks</h3>
-                </a>
-
-                <a href="/category?q=desserts" class="box">
-                    <img src="images/desserts.png" alt="">
-                    <h3>desserts</h3>
-                </a>
-
+            <div class="image">
+              <img src="images/pngegg.png" alt="" />
             </div>
+          </div>
 
-        </section>
-
-        <!--category section-->
-
-        <!--products setion-->
-
-        <section class="products">
-
-            <h1 class="title">lastest food</h1>
-
-
-
-            <div class="box-container">
-
-
-
-
-<% for(let d of top3dish) { %>
-                <form action="" method="post" class="box">
-                    <a href="/menu/<%= d.id %>" class="fas fa-eye"></a>
-                    <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
-                    <img src="<%= d.image %>" alt="">
-                    <a href="/category?q=<%= d.type %>" class="cat"><%= d.type %></a>
-                    <div class="name"><%= d.title %></div>
-                    <div class="flex">
-                        <div class="price"><%= d.price %> <span>vnd</span></div>
-                        <input type="number" name="qty" class="qty" min="1" max="99"
-                        value="1" onkeypress="if(this.value.length == 2) return false;">
-                    </div>
-                </form>
-                <% } %>
-            
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>order online</span>
+              <h3>yummy pasta</h3>
+              <a href="/menu" class="btn">see menus</a>
             </div>
-
-            <div class="more-btn">
-                <a href="/menu" class="btn">view all</a>
+            <div class="image">
+              <img src="images/pasta.png" alt="" />
             </div>
+          </div>
 
-        </section>
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>order online</span>
+              <h3>tasty pizza</h3>
+              <a href="/menu" class="btn">see menus</a>
+            </div>
+            <div class="image">
+              <img src="images/pizza.png" alt="" />
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>order online</span>
+              <h3>chezzy hamburger</h3>
+              <a href="/menu" class="btn">see menus</a>
+            </div>
+            <div class="image">
+              <img src="images/hamburger.png" alt="" />
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>order online</span>
+              <h3>fried chicken</h3>
+              <a href="/menu" class="btn">see menus</a>
+            </div>
+            <div class="image">
+              <img src="images/friedchicken.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!--hero section-->
+
+    <!--category section-->
+
+    <section class="category">
+      <h1 class="title">
+        food category
+      </h1>
+
+      <div class="box-container">
+        <a href="/category?q=fastfood" class="box">
+          <img src="images/fast-food.png" alt="" />
+          <h3>fast food</h3>
+        </a>
+
+        <a href="/category?q=maindish" class="box">
+          <img src="images/main-dish.png" alt="" />
+          <h3>main dish</h3>
+        </a>
+
+        <a href="/category?q=drinks" class="box">
+          <img src="images/drinks.png" alt="" />
+          <h3>drinks</h3>
+        </a>
+
+        <a href="/category?q=desserts" class="box">
+          <img src="images/desserts.png" alt="" />
+          <h3>desserts</h3>
+        </a>
+      </div>
+    </section>
+
+    <!--category section-->
+
+    <!--products setion-->
+
+    <section class="products">
+      <h1 class="title">lastest food</h1>
+
+      <div class="box-container">
+        <% for(let d of top3dish) { %>
+        <form action="" method="post" class="box">
+          <a href="/menu/<%= d.id %>" class="fas fa-eye"></a>
+          <button
+            type="submit"
+            class="fas fa-shopping-cart"
+            name="add_to_cart"
+          ></button>
+          <img src="<%= d.image %>" alt="" />
+          <a href="/category?q=<%= d.type %>" class="cat"><%= d.type %></a>
+          <div class="name"><%= d.title %></div>
+          <div class="flex">
+            <div class="price"><%= d.price %> <span>vnd</span></div>
+            <input
+              type="number"
+              name="qty"
+              class="qty"
+              min="1"
+              max="99"
+              value="1"
+              onkeypress="if(this.value.length == 2) return false;"
+            />
+          </div>
+        </form>
+        <% } %>
+      </div>
+
+      <div class="more-btn">
+        <a href="/menu" class="btn">view all</a>
+      </div>
+    </section>
+
+    <!--products setion-->
+
+    <!--footer-->
+    <footer class="footer">
+      <section class="grid">
+        <div class="box">
+          <img src="images/email.png" alt="" />
+          <h3>our email</h3>
+          <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
+          <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
+        </div>
+
+        <div class="box">
+          <img src="images/alarm-clock.png" alt="" />
+          <h3>opening hours</h3>
+          <p>10:00am to 14:00pm 20:00pm to 24:00pm</p>
+        </div>
+
+        <div class="box">
+          <img src="images/placeholder.png" alt="" />
+          <h3>our address</h3>
+          <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
+        </div>
+
+        <div class="box">
+          <img src="images/phone-call.png" alt="" />
+          <h3>our number</h3>
+          <a href="tel:123456789">123-456-789</a>
+          <a href="tel:113456789">113-456-789</a>
+        </div>
+      </section>
+
+      <div class="credit">
+        created by <span>me and my team</span> | all rights
+      </div>
+    </footer>
+    <!--footer-->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!--custom js file link-->
 
 
-        <!--products setion-->
-
-
-
-
-
-
-
-
-
-
-
-        <!--footer-->
-        <footer class="footer">
-
-            <section class="grid">
-
-                <div class="box">
-                    <img src="images/email.png" alt="">
-                    <h3>our email</h3>
-                    <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
-                    <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
-                </div>
-
-                <div class="box">
-                    <img src="images/alarm-clock.png" alt="">
-                    <h3>opening hours</h3>
-                    <p>10:00am to 14:00pm
-                       20:00pm to 24:00pm
-                    </p>
-                </div>
-
-                <div class="box">
-                    <img src="images/placeholder.png" alt="">
-                    <h3>our address</h3>
-                    <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
-                </div>
-
-                <div class="box">
-                    <img src="images/phone-call.png" alt="">
-                    <h3>our number</h3>
-                    <a href="tel:123456789">123-456-789</a>
-                    <a href="tel:113456789">113-456-789</a>
-                </div>
-
-            </section>
-
-            <div class="credit">created by <span>me and my team</span> | all rights </div>
-
-        </footer>
-        <!--footer-->
-
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-        <!--custom js file link-->
-        <script src="js/script.js"></script>
-
-        <script>
-                    var swiper = new Swiper(".hero-slider", {
-                        loop:true,
-                        grabCursor: true,
-                        effect: "flip",
-                        pagination: {
-                    el: ".swiper-pagination",
-                    clickable:true,
-                },
-            });
-        </script>
-    </body>
+    <script>
+      var swiper = new Swiper(".hero-slider", {
+        loop: true,
+        grabCursor: true,
+        effect: "flip",
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+  </body>
 </ejs>
