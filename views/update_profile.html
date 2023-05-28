@@ -15,40 +15,7 @@
 
   <body>
     <!--header section-->
-    <header class="header">
-      <section class="flex">
-        <a href="home.html" class="logo">ABC </a>
-
-        <nav class="navbar">
-          <a href="home.html">home</a>
-          <a href="about.html">about</a>
-          <a href="menu.html">menu</a>
-          <a href="orders.html">orders</a>
-          <a href="contact.html">contact</a>
-        </nav>
-
-        <div class="icons">
-          <a href="search.html"><i class="fas fa-search"></i></a>
-          <a href="cart.html"
-            ><i class="fas fa-shopping-cart"></i><span>(3)</span></a
-          >
-          <div id="user-btn" class="fas fa-user"></div>
-          <div id="menu-btn" class="fas fa-bars"></div>
-        </div>
-
-        <div class="profile">
-          <p class="name">abc xyz</p>
-          <div class="flex">
-            <a href="profile.html" class="btn">profile</a>
-            <a href="#" class="delete-btn">logout</a>
-          </div>
-          <p class="account">
-            <a href="login.html">login</a> or
-            <a href="register.html">register</a>
-          </p>
-        </div>
-      </section>
-    </header>
+    <%- include('partials/headersection'); %>
     <!--header section-->
 
     <section class="form-container">
@@ -139,7 +106,6 @@
     <!--footer-->
 
     <!--custom js file link-->
-    <script src="js/script.js"></script>
-    <script src="js/cookie.js"></script>
+
   </body>
 </html>

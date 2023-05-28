@@ -8,6 +8,14 @@ router.get("/", async (req, res) => {
   console.log("cart.controller GET /", req.cookies);
   const Cart = await cart.showCart(req.cookies.cartToken);
   console.log(Cart);
+  res.render("orders.html", { Cart });
+});
+
+router.get("/all", async (req, res) => {
+  console.log("cart.controller GET /all", req.cookies);
+  const Cart = await cart.showCart(req.cookies.cartToken);
+  console.log(Cart);
+  res.json(Cart);
 });
 
 router.post("/add", async (req, res) => {

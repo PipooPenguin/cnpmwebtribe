@@ -1,26 +1,25 @@
 console.log("addCart js");
-//const addCart = $(".addCart");
-console.log("????");
-// $(".addCart").submit(function (e) {
-//   console.log("js cart.js addcart");
-//   e.preventDefault();
-//   $.ajax({
-//     url: "/cart/add",
-//     type: "post",
-//     data: $("#addCart").serialize(),
-//     success: function () {
-//       alert("add cart success");
-//     },
-//   });
-// });
+
 function SubForm(id) {
   console.log("id: ", id);
   $.ajax({
     url: "/cart/add",
     type: "post",
     data: $(`#addCart_${id}`).serialize(),
-    success: function () {
-      alert("them vao gio hang thanh cong");
+    success: function (r) {
+      if (r.result === 1) {
+        alert("Thêm món ăn thành công");
+      } else alert("Có chút vấn đề, mời bạn thử lại");
     },
   });
 }
+
+$.ajax({
+  url: "/cart/all",
+  type: "get",
+  success: function (result) {
+    $("#cart").html(
+      `<i class="fas fa-shopping-cart">(${result.length})</i><span></span>`
+    );
+  },
+});

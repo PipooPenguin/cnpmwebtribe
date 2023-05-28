@@ -21,10 +21,10 @@ function getCookie(name) {
   return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
-function display(name, cookieValue) {
+function setCookies(name, cookieValue, minuteTime) {
   var now = new Date();
   var time = now.getTime();
-  var expireTime = time + 1000 * 36000;
+  var expireTime = time + 1000 * 60 * minuteTime;
   now.setTime(expireTime);
   document.cookie = `${name}=${cookieValue};expires=${now.toUTCString()};path=/`;
 }
@@ -34,7 +34,7 @@ function checkCartCookie() {
   var cartToken = getCookie("cartToken");
 
   if (cartToken == null) {
-    display("cartToken", cookiRandom());
+    setCookies("cartToken", cookiRandom(), 600);
   }
 }
 

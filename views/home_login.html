@@ -19,33 +19,8 @@
 
   <body>
     <!--header section-->
-    <header class="header">
-      <section class="flex">
-        <a href="home.html" class="logo">Web Tribe</a>
-
-        <nav class="navbar">
-          <a href="home.html">home</a>
-          <a href="about.html">about</a>
-          <a href="menu.html">menu</a>
-          <a href="orders.html">orders</a>
-          <a href="contact.html">contact</a>
-        </nav>
-
-        <div class="icons">
-          <a href="search.html"><i class="fas fa-search"></i></a>
-          <a href="cart.html"
-            ><i class="fas fa-shopping-cart"></i><span>()</span></a
-          >
-          <div id="user-btn" class="fas fa-user"></div>
-          <div id="menu-btn" class="fas fa-bars"></div>
-        </div>
-
-        <div class="profile">
-          <p class="name">please login first</p>
-          <a href="login.html" class="btn">login</a>
-        </div>
-      </section>
-    </header>
+ 
+    <%- include('partials/headersection'); %>
     <!--header section-->
 
     <!--hero section-->
@@ -296,8 +271,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <!--custom js file link-->
-    <script src="js/script.js"></script>
-    <script src="js/cookie.js"></script>
+
 
     <script>
       var swiper = new Swiper(".hero-slider", {
