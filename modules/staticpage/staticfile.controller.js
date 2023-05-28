@@ -23,5 +23,4 @@ router.get("/about", (req, res) => {
 router.get("/contact", (req, res) => {
   res.render("contact.html");
 });
-
 module.exports = router;
