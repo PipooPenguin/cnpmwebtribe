@@ -1,105 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title>CONTACT</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>CONTACT</title>
 
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 
-    </head>
+  <body>
+    <!--header section-->
+    <%- include('partials/headersection'); %>
+    <!--header section-->
 
-    <body>
-        <!--header section-->
-        <%- include('partials/headersection'); %>
-        <!--header section-->
+    <div class="heading">
+      <h3>contact us</h3>
+      <p><a href="home.html">home</a> <span> / contact</span></p>
+    </div>
 
+    <!--contact setion-->
 
-        <div class="heading">
-            <h3>contact us</h3>
-            <p><a href="home.html">home</a> <span> / contact</span></p>
+    <section class="contact">
+      <div class="row">
+        <div class="image">
+          <img src="images/contact.png" alt="" />
         </div>
 
-        <!--contact setion-->
+        <form action="">
+          <h3>tell us something!</h3>
+          <input
+            type="text"
+            name="name"
+            maxlength="50"
+            class="box"
+            placeholder="enter your name"
+            required
+          />
+          <input
+            type="number"
+            name="number"
+            min="0"
+            max="100"
+            class="box"
+            placeholder="enter your number"
+            required
+            onkeypress="if (this.value.length == 10) return false;"
+          />
+          <input
+            type="email"
+            name="email"
+            maxlength="50"
+            class="box"
+            placeholder="enter your email"
+            required
+          />
+          <textarea
+            name="msg"
+            class="box"
+            required
+            placeholder="enter your message"
+            maxlength="500"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input type="submit" value="send message" name="send" class="btn" />
+        </form>
+      </div>
+    </section>
 
-        <section class="contact">
+    <!--contact setion-->
 
-            <div class="row">
+    <!--footer-->
+    <footer class="footer">
+      <section class="grid">
+        <div class="box">
+          <img src="images/email.png" alt="" />
+          <h3>our email</h3>
+          <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
+          <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
+        </div>
 
-                <div class="image">
-                    <img src="images/contact.png" alt="">
-                </div>
+        <div class="box">
+          <img src="images/alarm-clock.png" alt="" />
+          <h3>opening hours</h3>
+          <p>10:00am to 14:00pm 20:00pm to 24:00pm</p>
+        </div>
 
-                <form action="">
-                    <h3>tell us something!</h3>
-                    <input type="text" name="name" maxlength="50" class="box" 
-                    placeholder="enter your name" required>
-                    <input type="number" name="number" min="0" max="100" class="box" 
-                    placeholder="enter your number" required onkeypress="if (this.value.length == 10) return false;">
-                    <input type="email" name="email" maxlength="50" class="box" 
-                    placeholder="enter your email" required>
-                    <textarea name="msg" class="box" required placeholder="enter your message" maxlength="500" cols="30" rows="10"></textarea>
-                    <input type="submit" value="send message" name="send" class="btn">
+        <div class="box">
+          <img src="images/placeholder.png" alt="" />
+          <h3>our address</h3>
+          <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
+        </div>
 
-                </form>
+        <div class="box">
+          <img src="images/phone-call.png" alt="" />
+          <h3>our number</h3>
+          <a href="tel:123456789">123-456-789</a>
+          <a href="tel:113456789">113-456-789</a>
+        </div>
+      </section>
 
-            </div>
+      <div class="credit">
+        created by <span>me and my team</span> | all rights
+      </div>
+    </footer>
+    <!--footer-->
 
-        </section>
-
-        <!--contact setion-->
-
-
-
-
-
-
-        <!--footer-->
-        <footer class="footer">
-
-            <section class="grid">
-
-                <div class="box">
-                    <img src="images/email.png" alt="">
-                    <h3>our email</h3>
-                    <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
-                    <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
-                </div>
-
-                <div class="box">
-                    <img src="images/alarm-clock.png" alt="">
-                    <h3>opening hours</h3>
-                    <p>10:00am to 14:00pm
-                       20:00pm to 24:00pm
-                    </p>
-                </div>
-
-                <div class="box">
-                    <img src="images/placeholder.png" alt="">
-                    <h3>our address</h3>
-                    <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
-                </div>
-
-                <div class="box">
-                    <img src="images/phone-call.png" alt="">
-                    <h3>our number</h3>
-                    <a href="tel:123456789">123-456-789</a>
-                    <a href="tel:113456789">113-456-789</a>
-                </div>
-
-            </section>
-
-            <div class="credit">created by <span>me and my team</span> | all rights </div>
-
-        </footer>
-        <!--footer-->
-
-
-
-
-        <!--custom js file link-->
-        <script src="js/script.js"></script>
-    </body>
+    <!--custom js file link-->
+    <script src="js/script.js"></script>
+    <script src="js/cookie.js"></script>
+  </body>
 </html>
