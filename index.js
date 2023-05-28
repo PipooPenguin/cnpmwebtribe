@@ -3,12 +3,14 @@ const app = express();
 const path = require("path");
 const ejs = require("ejs");
 const mongodb = require("./modules/mongodb/mongodb.service");
+const menuSerive = require("./modules/menu/menu.service");
 const menu = require("./modules/menu/menu.controller");
 const category = require("./modules/category/category.controller");
 const user = require("./modules/user/user.controller");
 const cart = require("./modules/cart/cart.controller");
 const order = require("./modules/order/order.controller");
 const payment = require("./modules/payment/payment.controller");
+const staticpage = require("./modules/staticpage/staticfile.controller");
 
 const { engine } = require("express-handlebars");
 const methodOverride = require("method-override");
@@ -27,12 +29,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => res.render('home.html'));
+app.use("/", staticpage);
 app.use("/menu", menu);
 app.use("/category", category);
 app.use("/user", user);
 app.use("/cart", cart);
-app.use("/order", order);
+app.use("/orders", order);
 app.use("/payment", payment);
 
 app.listen(3000, (req, res) => {
