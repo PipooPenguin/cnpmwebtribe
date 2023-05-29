@@ -5,6 +5,7 @@ function SubForm(id) {
   $.ajax({
     url: "/cart/add",
     type: "post",
+    
     data: $(`#addCart_${id}`).serialize(),
     success: function (r) {
       if (r.result === 1) {

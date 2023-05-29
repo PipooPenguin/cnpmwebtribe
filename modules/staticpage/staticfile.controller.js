@@ -13,7 +13,6 @@ router.get("/", async (req, res) => {
   console.log("static controller");
   const d = await menuSerive.getMenuAsync();
   const dish = d.slice(0, 3);
-  console.log(dish);
   res.render("home.html", { dish });
 });
 

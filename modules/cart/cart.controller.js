@@ -1,20 +1,20 @@
 const express = require("express");
 //const Cart = require("./cart.model");
 const cart = require("./cart.service");
-
+const dish = require("../menu/menu.model")
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   console.log("cart.controller GET /", req.cookies);
-  const Cart = await cart.showCart(req.cookies.cartToken);
-  console.log(Cart);
-  res.render("orders.html", { Cart });
+  const Dish=await cart.findDishByCart(req.cookies.cartToken)
+  // const Cart = await cart.showCart(req.cookies.cartToken);
+  // console.log("----Cart: ",Merge);
+   res.render("cart.html");
 });
 
 router.get("/all", async (req, res) => {
   console.log("cart.controller GET /all", req.cookies);
   const Cart = await cart.showCart(req.cookies.cartToken);
-  console.log(Cart);
   res.json(Cart);
 });
 

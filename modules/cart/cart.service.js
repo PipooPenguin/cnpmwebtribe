@@ -1,4 +1,5 @@
 const Cart = require("./cart.model");
+const Dish = require("../menu/menu.model");
 
 async function addToCart(cartToken, productId, quantity) {
   try {
@@ -37,9 +38,7 @@ async function showCart(cookie) {
     return cart;
   } catch (error) {
     console.log("cart.service showcart() error: ", e?.message);
-    
   }
-
 }
 async function update(cookie, id) {
   try {
@@ -51,9 +50,36 @@ async function update(cookie, id) {
     return 0;
   }
 }
+async function findDishByCart(cookie) {
+  try {
+    console.log("cart.controller findDishByCart:", cookie);
+    const cart = await Cart.find(
+      { cartToken: cookie },
+      { productId: 1, quantity: 1, _id: 0 }
+    );
+    console.log("cart------------: ",cart);
 
+    const dish = [];
+    for (let c of cart) {
+      // Object.values(c);
+const thing=await Dish.find({ _id: c.productId });
+      dish.push(thing[0]);
+    }
+    console.log("dish------------: ",dish);
+
+ //   console.log("cart.controller findDishByCart merge:", dish);
+    const merge = dish.map(obj1 => {
+      const obj2 = cart.find(obj2 => obj1._id === obj2.productId);
+      return { ...obj1, ...obj2 };
+    });
+    console.log("merge------------: ",merge);
+    return merge;
+    // MyModel.find({ email: 'you@email.com' }, { name: true, email: true, phone: true });
+  } catch (error) {}
+}
 module.exports = {
   addToCart: addToCart,
   showCart,
   update,
+  findDishByCart,
 };

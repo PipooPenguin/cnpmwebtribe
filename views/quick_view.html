@@ -13,8 +13,49 @@
 
     <body>
         <!--header section-->
-        <%- include('partials/headersection'); %>
-        <!--header section-->
+        <header class="header">
+            <section class="flex">
+              <a href="/" class="logo">Web Tribe</a>
+          
+              <nav class="navbar">
+                <a href="/">home</a>
+                <a href="/about">about</a>
+                <a href="/menu">menu</a>
+                <a href="/orders">orders</a>
+                <a href="/contact">contact</a>
+              </nav>
+              <div class="icons">
+                <a href="/search"><i class="fas fa-search"></i></a>
+                <a href="/cart" id="cart"
+                  ><i class="fas fa-shopping-cart"></i><span></span
+                ></a>
+                <div id="user-btn" class="fas fa-user"></div>
+                <div id="menu-btn" class="fas fa-bars"></div>
+              </div>
+          
+              <div class="profile">
+                <p class="name">abc xyz 123</p>
+                <div class="flex">
+                  <a href="/profile" class="btn">profile</a>
+                  <a
+                    href="#"
+                    onclick="return confirm('logout from this website?');"
+                    class="delete-btn"
+                    >logout</a
+                  >
+                </div>
+                <p class="account">
+                  <a href="/login">login</a> or <a href="/register">register</a>
+                </p>
+              </div>
+            </section>
+            <script src="/js/jquery-3.7.0.min.js"></script>
+            <script src="/js/script.js"></script>
+            <script src="/js/cookie.js"></script>
+            <script src="/js/cart.js"></script>
+          
+          </header>
+                  <!--header section-->
 
         <!--food category-->
 
@@ -24,19 +65,17 @@
 
             
 
-            <form action="/cart/add" method="post" class="box" id="addCart_1">
-
-                    
-                    
+            <form  class="box" id="addCart_<%= dish.id %>">
                 <img src="/<%= dish.image %>" alt="">
-                
                 <div class="name" name="title" value="<%= dish.title %>"><%= dish.title %></div>
                 <div class="flex">
-                    <div class="price" name="price"value="<%= dish.price%>"><%= dish.price %> <span>vnd</span></div>
+                    <div class="price" name="price" value="<%= dish.price%>"><%= dish.price %> <span>vnd</span></div>                  
+                    <input type="hidden" name="cartToken" value="" />
+                    <input type="hidden" name="productId" value="<%= dish.id %>" />
                     <input type="number" name="quantity" class="qty" min="1" max="99"
                     value="1" onkeypress="if(this.value.length == 2) return false;" >
                 </div>
-                <button id="" class="cart-btn" onclick="SubForm(1)">add to cart</button>
+                <button class="cart-btn" onclick="SubForm('<%= dish.id %>')">add to cart</button>
                 
             </form>
 
@@ -44,7 +83,7 @@
 
 
 
-
+     
         <!--food category-->
 
 
