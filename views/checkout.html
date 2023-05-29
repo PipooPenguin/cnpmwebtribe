@@ -1,154 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>CHECK OUT</title>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>CHECK OUT</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-  <body>
-    <!--header section-->
-    <header class="header">
-      <section class="flex">
-        <a href="home.html" class="logo">Web Tribe</a>
+    </head>
 
-        <nav class="navbar">
-          <a href="home.html">home</a>
-          <a href="about.html">about</a>
-          <a href="menu.html">menu</a>
-          <a href="orders.html">orders</a>
-          <a href="contact.html">contact</a>
-        </nav>
+    <body>
+        <!--header section-->
+        <header class="header">
+            <section class="flex">
+                <a href="home.html" class="logo">Web Tribe</a>
 
-        <div class="icons">
-          <a href="search.html"><i class="fas fa-search"></i></a>
-          <a href="cart.html"
-            ><i class="fas fa-shopping-cart"></i><span>(3)</span></a
-          >
-          <div id="user-btn" class="fas fa-user"></div>
-          <div id="menu-btn" class="fas fa-bars"></div>
+                <nav class="navbar">
+                    <a href="home.html">home</a>
+                    <a href="about.html">about</a>
+                    <a href="menu.html">menu</a>
+                    <a href="orders.html">orders</a>
+                    <a href="contact.html">contact</a>
+                </nav>
+
+                <div class="icons">
+                    <a href="search.html"><i class="fas fa-search"></i></a>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(3)</span></a>
+                    <div id="user-btn" class="fas fa-user"></div>
+                    <div id="menu-btn" class="fas fa-bars"></div>
+                </div>
+
+                <div class="profile">
+                    <p class="name">abc xyz</p>
+                    <div class="flex">
+                        <a href="profile.html" class="btn">profile</a>
+                        <a href="#" class="delete-btn">logout</a>
+                    </div>
+                    <p class="account"><a href="login.html">login</a> or <a href="register.html">register</a></p>
+                </div>
+            </section>
+            
+
+        </header>
+        <!--header section-->
+
+        <div class="heading">
+            <h3>checkout</h3>
+            <p><a href="home.html">home</a> <span> / checkout</span></p>
         </div>
 
-        <div class="profile">
-          <p class="name">abc xyz</p>
-          <div class="flex">
-            <a href="profile.html" class="btn">profile</a>
-            <a href="#" class="delete-btn">logout</a>
-          </div>
-          <p class="account">
-            <a href="login.html">login</a> or
-            <a href="register.html">register</a>
-          </p>
-        </div>
-      </section>
-    </header>
-    <!--header section-->
+        <section class="checkout">
 
-    <div class="heading">
-      <h3>checkout</h3>
-      <p><a href="home.html">home</a> <span> / checkout</span></p>
-    </div>
+            <h1 class="title">order summary</h1>
 
-    <section class="checkout">
-      <h1 class="title">order summary</h1>
+            <form action="" method="post">
 
-      <form action="" method="post">
-        <div class="cart-items">
-          <h3>cart items</h3>
-          <p>
-            <span class="name">desserts 1</span
-            ><span class="price">20000vnd</span>
-          </p>
-          <p>
-            <span class="name">main dish 1</span
-            ><span class="price">20000vnd</span>
-          </p>
-          <p>
-            <span class="name">drinks 1</span
-            ><span class="price">20000vnd</span>
-          </p>
-          <p class="grand-total">
-            <span class="name">grand total :</span
-            ><span class="price">60000vnd</span>
-          </p>
-          <a href="cart.html" class="btn">view cart</a>
-        </div>
+                <div class="cart-items">
+                    <h3>cart items</h3>
+                    <p><span class="name">desserts 1</span><span class="price">20000vnd</span></p>
+                    <p><span class="name">main dish 1</span><span class="price">20000vnd</span></p>
+                    <p><span class="name">drinks 1</span><span class="price">20000vnd</span></p>
+                    <p class="grand-total"><span class="name">grand total :</span><span class="price">60000vnd</span></p>
+                    <a href="cart.html" class="btn">view cart</a>
+                </div>
 
-        <div class="user-info">
-          <h3>your info</h3>
-          <p><i class="fas fa-user"></i><span>viet dung</span></p>
-          <p><i class="fas fa-phone"></i><span>0973641861</span></p>
-          <p>
-            <i class="fas fa-envelope"></i><span>dungviet2k3@gmail.com</span>
-          </p>
-          <a href="update_profile.html" class="btn">update info</a>
-          <h3>delivery address</h3>
-          <p>
-            <i class="fas fa-map-marker-alt"></i
-            ><span>347 tran phu, tp buon ma thuot, tinh dak lak</span>
-          </p>
-          <a href="update_address.html" class="btn">update address</a>
-          <select name="method" class="box" required>
-            <option value="" disabled selected>select payment method --</option>
-            <option value="cash on delivery">cash on delivery</option>
-            <option value="credit card">credit card</option>
-            <option value="paytm">paytm</option>
-            <option value="paypal">paypal</option>
-          </select>
-          <input
-            type="submit"
-            value="place order"
-            class="btn"
-            style="width: 100%; background: var(--red); color: var(--white);"
-          />
-        </div>
-      </form>
-    </section>
+                <div class="user-info">
+                    <h3>Delivery Details</h3>
+                    <p><input class="box" type="text" value="vietdung" placeholder="Full name" required/></p>                    
+                    <p><input class="box" type="tel" value="0839999999" placeholder="Phone number" required/></p>                    
+                    <p><input class="box" type="email" value="" placeholder="Email"/></p>                    
 
-    <!--footer-->
-    <footer class="footer">
-      <section class="grid">
-        <div class="box">
-          <img src="images/email.png" alt="" />
-          <h3>our email</h3>
-          <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
-          <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
-        </div>
+                    <a href="update_profile.html" class="btn">update info</a>
+                    <h3>delivery address</h3>
+                    <p><input class="box" type="text" value="blank" placeholder="Enter your address" required/></p>                    
+                    <select name="city" id="city" class="box" required>
+                        <option value="" disabled selected>Select Tỉnh/Thành</option>
+                        <!-- Add Tỉnh/Thành options here -->
+                    </select>
+                    
+                    <select name="district" id="district" class="box" required>
+                        <option value="" disabled selected>Select Quận/Huyện</option>
+                        <!-- Add Quận/Huyện options here -->
+                    </select>
+                    
+                    <select name="ward" id="ward" class="box" required>
+                        <option value="" disabled selected>Select Phường/Xã</option>
+                        <!-- Add Thị Xã options here -->
+                    </select>
+                    <a href="update_address.html" class="btn">update address</a>
+                    <select name="method" class="box" required>
+                        <option value="" disabled selected>select payment method --</option>
+                        <option value="cash on delivery">cash on delivery</option>
+                        <option value="credit card">credit card</option>
+                        <option value="paytm">paytm</option>
+                        <option value="paypal">paypal</option>
+                    </select>
+                    <input type="submit" value="place order" class="btn" style="width: 100%; background: var(--red); color: var(--white);">
+                </div>
+            </form>
 
-        <div class="box">
-          <img src="images/alarm-clock.png" alt="" />
-          <h3>opening hours</h3>
-          <p>10:00am to 14:00pm 20:00pm to 24:00pm</p>
-        </div>
+        </section>
 
-        <div class="box">
-          <img src="images/placeholder.png" alt="" />
-          <h3>our address</h3>
-          <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
-        </div>
 
-        <div class="box">
-          <img src="images/phone-call.png" alt="" />
-          <h3>our number</h3>
-          <a href="tel:123456789">123-456-789</a>
-          <a href="tel:113456789">113-456-789</a>
-        </div>
-      </section>
 
-      <div class="credit">
-        created by <span>me and my team</span> | all rights
-      </div>
-    </footer>
-    <!--footer-->
 
-    <!--custom js file link-->
 
-  </body>
+
+        <!--footer-->
+        <footer class="footer">
+
+            <section class="grid">
+
+                <div class="box">
+                    <img src="images/email.png" alt="">
+                    <h3>our email</h3>
+                    <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
+                    <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
+                </div>
+
+                <div class="box">
+                    <img src="images/alarm-clock.png" alt="">
+                    <h3>opening hours</h3>
+                    <p>10:00am to 14:00pm
+                       20:00pm to 24:00pm
+                    </p>
+                </div>
+
+                <div class="box">
+                    <img src="images/placeholder.png" alt="">
+                    <h3>our address</h3>
+                    <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
+                </div>
+
+                <div class="box">
+                    <img src="images/phone-call.png" alt="">
+                    <h3>our number</h3>
+                    <a href="tel:123456789">123-456-789</a>
+                    <a href="tel:113456789">113-456-789</a>
+                </div>
+
+            </section>
+
+            <div class="credit">created by <span>me and my team</span> | all rights </div>
+
+        </footer>
+        <!--footer-->
+
+
+
+
+        <!--custom js file link-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <script>
+    var cities = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+      url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
+      method: "GET", 
+      responseType: "application/json", 
+    };
+    var promise = axios(Parameter);
+    promise.then(function (result) {
+      renderCity(result.data);
+    });
+    
+    function renderCity(data) {
+      for (const x of data) {
+        cities.options[cities.options.length] = new Option(x.Name, x.Id);
+      }
+      cities.onchange = function () {
+        district.length = 1;
+        ward.length = 1;
+        if(this.value != ""){
+          const result = data.filter(n => n.Id === this.value);
+    
+          for (const k of result[0].Districts) {
+            district.options[district.options.length] = new Option(k.Name, k.Id);
+          }
+        }
+      };
+      district.onchange = function () {
+        ward.length = 1;
+        const dataCity = data.filter((n) => n.Id === cities.value);
+        if (this.value != "") {
+          const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+    
+          for (const w of dataWards) {
+            wards.options[wards.options.length] = new Option(w.Name, w.Id);
+          }
+        }
+      };
+    }
+        </script>
+    </body>
 </html>

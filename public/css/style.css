@@ -818,7 +818,7 @@ section {
 .checkout form .user-info p {
     font-size: 2rem;
     line-height: 1.5;
-    padding: 1rem 0;
+    padding: 0 0;
 }
 
 .checkout form .user-info p i{
