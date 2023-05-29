@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   console.log("menu.controller GET /menu/:id req.params.id:", req.params.id);
   const dish = await menu.getDishByIdAsync(req.params.id);
+  console.log("dish----: ",dish);
   res.render("quick_view.html", { dish });
 });
 

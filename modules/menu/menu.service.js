@@ -6,7 +6,9 @@ async function getMenuAsync() {
 }
 
 async function getDishByIdAsync(id) {
-  const dish = await Dish.findById(id);
+   const dish = await Dish.findById(id);
+  //const dish = await Dish.find({ _id: id });
+
   return dish;
 }
 

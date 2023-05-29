@@ -24,23 +24,21 @@
 
             
 
-                <form action="" method="post" class="box">
+            <form action="/cart/add" method="post" class="box" id="addCart_1">
 
                     
                     
-                    <img src="../<%= dish.image %>" alt="">
-                    
-                    <div class="name"><%= dish.title %></div>
-                    <div class="flex">
-                        <div class="price"><%= dish.price %> <span>vnd</span></div>
-                        <input type="number" name="qty" class="qty" min="1" max="99"
-                        value="1" onkeypress="if(this.value.length == 2) return false;">
-                    </div>
-                    <button type="submit" name="add_to_cart" class="cart-btn">add to cart</button>
-                    
-                    
-                </form>
-                </form>
+                <img src="/<%= dish.image %>" alt="">
+                
+                <div class="name" name="title" value="<%= dish.title %>"><%= dish.title %></div>
+                <div class="flex">
+                    <div class="price" name="price"value="<%= dish.price%>"><%= dish.price %> <span>vnd</span></div>
+                    <input type="number" name="quantity" class="qty" min="1" max="99"
+                    value="1" onkeypress="if(this.value.length == 2) return false;" >
+                </div>
+                <button id="" class="cart-btn" onclick="SubForm(1)">add to cart</button>
+                
+            </form>
 
         </section>
 
