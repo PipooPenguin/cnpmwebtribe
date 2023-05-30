@@ -26,3 +26,21 @@ $.ajax({
     );
   },
 });
+
+
+function SForm(id) {
+  console.log("id: ", id);
+  $.ajax({
+    url: "/cart/updatequantity",
+    type: "post",
+    
+    data: $(`#addCart_${id}`).serialize(),
+        success: function (r) {
+      if (r.result === 1) {
+        alert("Thêm món ăn thành công");
+      } else alert("Có chút vấn đề, mời bạn thử lại");
+    },
+    
+  });
+
+}

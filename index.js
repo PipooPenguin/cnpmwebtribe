@@ -34,7 +34,6 @@ app.use("/menu", menu);
 app.use("/category", category);
 app.use("/user", user);
 app.use("/cart", cart);
-app.use("/checkout", (req,res)=>{res.render('checkout.html')});
 app.use("/payment", payment);
 
 app.listen(3000, (req, res) => {

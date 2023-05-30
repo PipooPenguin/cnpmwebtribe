@@ -1,15 +1,17 @@
 const express = require("express");
 //const Cart = require("./cart.model");
 const cart = require("./cart.service");
-const dish = require("../menu/menu.model")
+const dish = require("../menu/menu.model");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   console.log("cart.controller GET /", req.cookies);
-  const Bill=await cart.findDishByCart(req.cookies.cartToken)
+  const B = await cart.findDishByCart(req.cookies.cartToken);
   // const Cart = await cart.showCart(req.cookies.cartToken);
-   console.log("----Bill: ",Bill);
-   res.render("cart.html",{Bill});
+const total=B.pop()
+const Bill = B[0];
+  console.log("----total: ", total);
+  res.render("cart.html", { Bill ,total});
 });
 
 router.get("/all", async (req, res) => {
@@ -17,7 +19,9 @@ router.get("/all", async (req, res) => {
   const Cart = await cart.showCart(req.cookies.cartToken);
   res.json(Cart);
 });
-
+router.get("/cart/updatequantity", async (req, res) => {
+  console.log("cart.controller GET /cart/updatequantity", req.body);
+});
 router.post("/add", async (req, res) => {
   console.log("cart.controller POST /");
   console.log("request body:", req.body);
@@ -37,5 +41,7 @@ router.patch("/", async (req, res) => {
   const result = await cart.update(token, id);
   res.json({ result });
 });
-
+router.post("/cart/printBill", (req, res) => {
+  console.log("cart.controller POST: ", req.body);
+});
 module.exports = router;
