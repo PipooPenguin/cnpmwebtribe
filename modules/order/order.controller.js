@@ -1,10 +1,12 @@
-const express = require("express");
-const order = require("./order.service");
-const router = express.Router();
+// const express = require("express");
+// const menu = require("./menu.service");
+// const router = express.Router();
 
-router.get("/", (req, res) => {
-  order.get();
-  res.render("orders.html");
-});
+// router.get("/", async (req, res) => {
+//   console.log("menu.controller GET /menu");
+//   const dish = await menu.getMenuAsync();
+//   res.render("menu.html", { dish });
+// });
 
-module.exports = router;
+
+// module.exports = router;

@@ -1,5 +1,12 @@
-async function get() {
-  return 0;
-}
-
-module.exports = { get };
+// const Dish = require("./menu.model");
+// async function getMenuAsync() {
+//   const dish = await Dish.find({}).sort({ createdAt: -1 });
+//   return dish;
+// }
+// module.exports = {
+//   getDishByIdAsync,
+//   getDishByIdAsync,
+//   getMenuAsync,
+//   getCategory,
+//   getSearchDishes,
+// };

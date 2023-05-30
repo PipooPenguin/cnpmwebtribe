@@ -1,17 +1,18 @@
 <% for(let d of dish) { %>
-    <form action="" method="post" class="box">
+    <form class="box" id="addCart_<%= d.id %>">
       <!-- <a href="/menu/<%= d.id %>" class="fas fa-eye"></a> -->
       <button
-        type="submit"
-        class="fas fa-shopping-cart"
-        name="add_to_cart"
-      ></button>
+      onclick="SubForm('<%= d.id %>')"
+      class="fas fa-shopping-cart"
+    ></button>
       <a href="/menu/<%= d.id %>" alt=''> <img src="/<%= d.image %>" alt="" /> </a>
       
       <a href="/category?q=<%= d.type %>" class="cat"><%= d.type %></a>
       <div class="name"><%= d.title %></div>
       <div class="flex">
-        <div class="price"><%= d.price %> <span>vnd</span></div>
+        <div class="price"><%= d.price %> <span>vnd</span></div>      
+        <input type="hidden" name="cartToken" value="" />
+        <input type="hidden" name="productId" value="<%= d.id %>" />
         <input
           type="number"
           name="qty"
@@ -24,3 +25,4 @@
       </div>
     </form>
     <% } %>
+
