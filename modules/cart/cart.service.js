@@ -36,7 +36,7 @@ async function addToCart(cartToken, productId, quantity) {
 }
 async function showCart(cookie) {
   try {
-    const cart = await Cart.find({ cartToken: cookie, isBought: false });
+    const cart = await Cart.find({ cartToken: cookie, isBought: false ,quantity: { $ne: 0 }});
     return cart;
   } catch (error) {
     console.log("cart.service showcart() error: ", e?.message);
@@ -56,7 +56,7 @@ async function findDishByCart(cookie) {
   try {
     console.log("cart.controller findDishByCart:", cookie);
     const cart = await Cart.find(
-      { cartToken: cookie, isBought: false },
+      { cartToken: cookie, isBought: false,quantity: { $ne: 0 } },
       { productId: 1, quantity: 1 }
     );
  //   console.log("cart------------: ", cart);
@@ -70,7 +70,7 @@ async function findDishByCart(cookie) {
       );
       dish.push(thing[0]);
     }
-    console.log("dish------------: ", dish);
+    // console.log("dish------------: ", dish);
 
     //   console.log("cart.controller findDishByCart merge:", dish);
     const merge = [];
@@ -91,10 +91,10 @@ async function findDishByCart(cookie) {
     }
     // const merge=cart[0].quantity;
     merge2
-    console.log("total money!!------------: ", temp);
+    // console.log("total money!!------------: ", temp);
 //    merge2[1]={total:temp}
 
-    console.log("MERGE!!------------: ", merge2);
+    // console.log("MERGE!!------------: ", merge2);
     const m=[merge2,temp]
     return m;
     // MyModel.find({ email: 'you@email.com' }, { name: true, email: true, phone: true });

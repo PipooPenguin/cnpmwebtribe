@@ -35,39 +35,44 @@
 
       <div class="box-container">
         <% for(let bill of Bill) { %>
-        <form action="/cart/updateQuantity" class="box">
+          
+        <form action="/cart/editcart?_method=PATCH" method="POST" class="box">
           <a href='/menu/<%= bill._doc._id %>' alt=''>             <img src="/<%= bill._doc.image %>" alt="" />
           </a>
+          
           <button
-            type="submit"
-            class="fas fa-times"
-            name="delete"
-          ></button>
+          type="submit"
+          class="fas fa-times"
+          name="qu"
+          value="0"
+        ></button>
           <a href="/category?q=<%= bill._doc.type %>" class="cat"><%= bill._doc.type %></a>
           <div class="name"><%= bill._doc.title %></div>
           <div class="flex">
             <div class="price"><%= bill._doc.price %> <span>vnd</span></div>
+            <input type="hidden" name="id" value="<%= bill.cid %>" />
 
             <input
               type="number"
               id="quantitychange_<%= bill._doc._id %>"
-              name="qty"
+              name="quantity"
               class="qty"
               min="1"
               max="99"
               value="<%= bill.q %>"
               onkeypress="if(this.value.length == 2) return false;"
-            />
+            />         
             <button
-              onclick="SForm('<%= bill.id %>')"
-              class="fas fa-edit"
+            class="fas fa-edit"
             ></button>          </div>
           <div class="sub-total">sub total : <span><%= bill._doc.price*bill.q %> vnd</span></div>
         </form>
         <% } %>
+        
       </div>
 
- 
+ <!-- shopping cart section-->
+    <!--footer-->
     </section>
 
     <!-- shopping cart section-->
