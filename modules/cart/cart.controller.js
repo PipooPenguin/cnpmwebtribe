@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   console.log("cart.controller GET /", req.cookies);
-  const Dish=await cart.findDishByCart(req.cookies.cartToken)
+  const Bill=await cart.findDishByCart(req.cookies.cartToken)
   // const Cart = await cart.showCart(req.cookies.cartToken);
-  // console.log("----Cart: ",Merge);
-   res.render("cart.html");
+   console.log("----Bill: ",Bill);
+   res.render("cart.html",{Bill});
 });
 
 router.get("/all", async (req, res) => {

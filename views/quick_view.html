@@ -67,6 +67,8 @@
 
             <form  class="box" id="addCart_<%= dish.id %>">
                 <img src="/<%= dish.image %>" alt="">
+            <a href="/category?q=<%= dish.type %>" class="cat"><%= dish.type %></a>
+
                 <div class="name" name="title" value="<%= dish.title %>"><%= dish.title %></div>
                 <div class="flex">
                     <div class="price" name="price" value="<%= dish.price%>"><%= dish.price %> <span>vnd</span></div>                  

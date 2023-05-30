@@ -9,7 +9,8 @@ async function addToCart(cartToken, productId, quantity) {
 
     const result = await Cart.findOne({
       cartToken: cartToken,
-      productId: productId, isBought:false
+      productId: productId,
+      isBought: false,
     });
     console.log(result);
     if (!result) {
@@ -17,13 +18,13 @@ async function addToCart(cartToken, productId, quantity) {
         cartToken: cartToken,
         productId: productId,
         quantity: quantity,
-        isBought:false
+        isBought: false,
       });
       console.log("object newCart: ", JSON.stringify(newCart));
       await newCart.save();
     } else {
       await Cart.updateOne(
-        { cartToken: cartToken, productId: productId ,isBought:false},
+        { cartToken: cartToken, productId: productId, isBought: false },
         { quantity: Number(result?.quantity ?? 0) + Number(quantity) }
       );
     }
@@ -35,7 +36,7 @@ async function addToCart(cartToken, productId, quantity) {
 }
 async function showCart(cookie) {
   try {
-    const cart = await Cart.find({ cartToken: cookie, isBought:false});
+    const cart = await Cart.find({ cartToken: cookie, isBought: false });
     return cart;
   } catch (error) {
     console.log("cart.service showcart() error: ", e?.message);
@@ -55,26 +56,35 @@ async function findDishByCart(cookie) {
   try {
     console.log("cart.controller findDishByCart:", cookie);
     const cart = await Cart.find(
-      { cartToken: cookie, isBought:false },
+      { cartToken: cookie, isBought: false },
       { productId: 1, quantity: 1, _id: 0 }
     );
-    console.log("cart------------: ",cart);
+ //   console.log("cart------------: ", cart);
 
     const dish = [];
     for (let c of cart) {
       // Object.values(c);
-const thing=await Dish.find({ _id: c.productId });
+      const thing = await Dish.find(
+        { _id: c.productId },
+        { title: 1, image: 1,price: 1, _id: 0 }
+      );
       dish.push(thing[0]);
     }
-    console.log("dish------------: ",dish);
+   // console.log("dish------------: ", dish[1]);
 
- //   console.log("cart.controller findDishByCart merge:", dish);
-    const merge = dish.map(obj1 => {
-      const obj2 = cart.find(obj2 => obj1._id === obj2.productId);
-      return { ...obj1, ...obj2 };
-    });
-    console.log("merge------------: ",merge);
-    return merge;
+    //   console.log("cart.controller findDishByCart merge:", dish);
+    const merge = [];
+    const merge2 = [];
+    for (let i = 0; i < dish.length; i++) {
+      //  merge[i]['quantity'] = '31';
+      const quty = cart[i].quantity;
+      merge.push(dish[i]);
+      merge2[i]={...merge[i],q : quty}
+    }
+    // const merge=cart[0].quantity;
+
+ //   console.log("MERGE!!------------: ", merge2);
+    return merge2;
     // MyModel.find({ email: 'you@email.com' }, { name: true, email: true, phone: true });
   } catch (error) {}
 }
