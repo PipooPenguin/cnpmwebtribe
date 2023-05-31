@@ -27,33 +27,22 @@
       <h1 class="title">your orders</h1>
 
       <div class="box-container">
+        <% for(let c of Checkout ) { %>
         <div class="box">
-          <p>placed on: <span>5-18-2023</span></p>
-          <p>name: <span>viet dung</span></p>
-          <p>number: <span>012346789</span></p>
-          <p>email: <span>dungviet2k3@gmail.com</span></p>
+          <p>placed on: <span><%=  c.createdAt %></span></p>
+          <p>name: <span><%= c.cusName %></span></p>
+          <p>number: <span><%= c.pNumber %></span></p>
+          <p>email: <span><%= c.email %></span></p>
           <p>address: <span>123 tran phu, phuong thanh cong, tp BMT</span></p>
           <p>
-            your orders:
-            <span>main dish 1 (1) - desserts 1 (1) - drinks 1 (1) </span>
+            your orders: <% for( let b of c.Bill) { %>
+            <span><%= b.productTitle %> (<%= b.quantity %>)</span>
+            <% } %>
           </p>
           <p>payment method: <span>cash on delivery</span></p>
           <p>payment status: <span style="color: var(--red);">pending</span></p>
         </div>
-
-        <div class="box">
-          <p>placed on: <span>5-18-2023</span></p>
-          <p>name: <span>viet dung</span></p>
-          <p>number: <span>012346789</span></p>
-          <p>email: <span>dungviet2k3@gmail.com</span></p>
-          <p>address: <span>123 tran phu, phuong thanh cong, tp BMT</span></p>
-          <p>
-            your orders:
-            <span>main dish 1 (1) - desserts 1 (1) - drinks 1 (1) </span>
-          </p>
-          <p>payment method: <span>cash on delivery</span></p>
-          <p>payment status: <span style="color: var(--red);">pending</span></p>
-        </div>
+        <% } %>
       </div>
     </section>
 
@@ -94,6 +83,5 @@
     <!--footer-->
 
     <!--custom js file link-->
-
   </body>
 </html>

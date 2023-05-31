@@ -52,13 +52,13 @@ async function setIsBoughtNull(req) {
   }
 }
 
-// async function printBill(cookies) {
-//   const checkout = await Checkout.find({ token: cookies });
-//   console.log("bill trên trang order:", checkout);
-//   return checkout;
-// }
+async function printBill(cookies) {
+  const checkout = await Checkout.find({ token: cookies });
+  console.log("bill trên trang order:", checkout);
+  return checkout;
+}
 module.exports = {
   addBill,
   setIsBoughtNull,
-  // printBill,
+  printBill,
 };

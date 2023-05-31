@@ -3,11 +3,6 @@ const checkout = require("./checkout.service");
 const router = express.Router();
 
 
-// router.get("/orders", async (req, res) => {
-//   console.log("checkout.controller GET /orders/",req.cookies.cartToken);
-//    const c=checkout.printBill(req.cookies.cartToken)
-//   res.render("orders.html");
-// });
 router.post("/", async (req, res) => {
   console.log("checkout.controller POST /checkout/", req.body);
   await checkout.addBill(req);
@@ -15,5 +10,10 @@ router.post("/", async (req, res) => {
   // res.render("menu.html", { dish });
   res.redirect("/checkout/orders");
 });
-
+router.get("/orders", async (req, res) => {
+  console.log("checkout.controller GET /orders/",req.cookies.cartToken);
+   const Checkout=await checkout.printBill(req.cookies.cartToken) 
+   console.log("form bill",Checkout)  ;
+  res.render("orders.html",{Checkout});
+});
 module.exports = router;
