@@ -13,12 +13,22 @@ async function addBill(req) {
   let productTitle = 0;
   let quantity = 0;
   let cartId = 0;
-  for (let i = 0; i < req.body.Billtitle.length; i++) {
-    productTitle = req.body.Billtitle[i];
-    quantity = req.body.Billquantity[i];
-    cartId = req.body.cartId[i];
+
+  if (typeof req.body.cartId === "string") {
+    productTitle = req.body.Billtitle;
+    quantity = req.body.Billquantity;
+    cartId = req.body.cartId;
     bill.Bill.push({ productTitle, quantity, cartId });
+  } 
+  else {
+    for (let i = 0; i < req.body.Billtitle.length; i++) {
+      productTitle = req.body.Billtitle[i];
+      quantity = req.body.Billquantity[i];
+      cartId = req.body.cartId[i];
+      bill.Bill.push({ productTitle, quantity, cartId });
+    }
   }
+
   console.log("Đây là bill thanh toán xuât ra------", bill);
   await bill.save();
 }
@@ -26,9 +36,13 @@ async function addBill(req) {
 async function setIsBoughtNull(req) {
   console.log("checkout.service /checkout :", req.body);
   let doiSo = req.body.cartId.length;
-  console.log("typeof req.body.cartId: ------------", typeof req.body.cartId)
-  if (typeof req.body.cartId === 'string') {
-    let temp = req.body.cartId;
+  console.log(
+    "typeof req.body.cartId: ------------",
+    typeof req.body.cartId === "string"
+  );
+  let temp = 0;
+  if (typeof req.body.cartId === "string") {
+    temp = req.body.cartId;
     await Cart.findByIdAndUpdate(temp, { isBought: true });
   } else {
     for (let i = 0; i < doiSo; i++) {
@@ -38,7 +52,13 @@ async function setIsBoughtNull(req) {
   }
 }
 
+// async function printBill(cookies) {
+//   const checkout = await Checkout.find({ token: cookies });
+//   console.log("bill trên trang order:", checkout);
+//   return checkout;
+// }
 module.exports = {
   addBill,
   setIsBoughtNull,
+  // printBill,
 };
