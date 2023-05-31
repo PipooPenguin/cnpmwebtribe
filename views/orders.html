@@ -33,14 +33,14 @@
           <p>name: <span><%= c.cusName %></span></p>
           <p>number: <span><%= c.pNumber %></span></p>
           <p>email: <span><%= c.email %></span></p>
-          <p>address: <span>123 tran phu, phuong thanh cong, tp BMT</span></p>
+          <p>address: <span><%= c.address[0].adrss %>, <%= c.address[0].ward %>, <%= c.address[0].city %></span></p>
           <p>
             your orders: <% for( let b of c.Bill) { %>
             <span><%= b.productTitle %> (<%= b.quantity %>)</span>
             <% } %>
           </p>
           <p>payment method: <span>cash on delivery</span></p>
-          <p>payment status: <span style="color: var(--red);">pending</span></p>
+          <p>payment status: <span style="color: var(--red);"><%= c.status %></span></p>
         </div>
         <% } %>
       </div>

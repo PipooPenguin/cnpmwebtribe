@@ -13,14 +13,18 @@ async function addBill(req) {
   let productTitle = 0;
   let quantity = 0;
   let cartId = 0;
+  let adrss=req.body.adrss;
+  let ward=req.body.ward;
+  let district=req.body.district;
+  let city=req.body.city;
 
+  bill.address.push({ adrss,ward,district,city});
   if (typeof req.body.cartId === "string") {
     productTitle = req.body.Billtitle;
     quantity = req.body.Billquantity;
     cartId = req.body.cartId;
     bill.Bill.push({ productTitle, quantity, cartId });
-  } 
-  else {
+  } else {
     for (let i = 0; i < req.body.Billtitle.length; i++) {
       productTitle = req.body.Billtitle[i];
       quantity = req.body.Billquantity[i];
@@ -53,7 +57,9 @@ async function setIsBoughtNull(req) {
 }
 
 async function printBill(cookies) {
-  const checkout = await Checkout.find({ token: cookies });
+  const checkout = await Checkout.find({ token: cookies }).sort({
+    createdAt: -1,
+  });
   console.log("bill trên trang order:", checkout);
   return checkout;
 }

@@ -10,7 +10,7 @@ const checkoutSchema = new Schema({
   cusName: String,
   email: String,
   pNumber: String,
-  address: [{ city: String, district: String, ward: String }],
+  address: [{ adrss: String,city: String, district: String, ward: String }],
   method: String,
   total: Number,
   Bill: [{ cartId: String, productTitle: String, quantity: Number }],
@@ -18,6 +18,10 @@ const checkoutSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  status: {
+    type: String,
+    default: "Pending"
+  }
 });
 
 // file js kết nối với file index.js thì phải có module.exports return ra cái gì đó. 'Dishes' có một chữ + viết hoa chữ cái đầu là rule của mongoose, sẽ tạo một collection(table) với tên dishes
