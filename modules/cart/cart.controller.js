@@ -11,7 +11,6 @@ router.get("/", async (req, res) => {
   // const Cart = await cart.showCart(req.cookies.cartToken);
   const total = B.pop();
   const Bill = B[0];
-  //console.log("----total: ", total);
   res.render("cart.html", { Bill, total });
 });
 
@@ -45,16 +44,21 @@ router.patch("/", async (req, res) => {
 // });
 router.patch("/editcart", async (req, res) => {
   console.log("cart.controller PATCH editcart /", req.body);
-  const { id, quantity,qu } = req.body;
-// console.log('qu----:',qu);
-if (qu){
-  await Cart.findByIdAndUpdate(id, { quantity: qu });
-
-}
-else{
-  await Cart.findByIdAndUpdate(id, { quantity: quantity });
-
-}
+  const { id, quantity, qu } = req.body;
+  // console.log('qu----:',qu);
+  if (qu) {
+    await Cart.findByIdAndUpdate(id, { quantity: qu });
+  } else {
+    await Cart.findByIdAndUpdate(id, { quantity: quantity });
+  }
   res.redirect("/cart");
+});
+
+router.get("/checkout", async (req, res) => {
+  console.log("cart.controller GET /checkout", req.cookies);
+  const B = await cart.findDishByCart(req.cookies.cartToken);
+  const total = B.pop();
+  const Bill = B[0];
+  res.render("checkout.html", { Bill, total });
 });
 module.exports = router;
