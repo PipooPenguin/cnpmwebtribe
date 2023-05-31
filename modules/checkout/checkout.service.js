@@ -26,9 +26,15 @@ async function addBill(req) {
 async function setIsBoughtNull(req) {
   console.log("checkout.service /checkout :", req.body);
   let doiSo = req.body.cartId.length;
-  for (let i = 0; i < doiSo; i++) {
-    let temp = req.body.cartId[i];
-     await Cart.findByIdAndUpdate(temp, { isBought: true });
+  console.log("typeof req.body.cartId: ------------", typeof req.body.cartId)
+  if (typeof req.body.cartId === 'string') {
+    let temp = req.body.cartId;
+    await Cart.findByIdAndUpdate(temp, { isBought: true });
+  } else {
+    for (let i = 0; i < doiSo; i++) {
+      let temp = req.body.cartId[i];
+      await Cart.findByIdAndUpdate(temp, { isBought: true });
+    }
   }
 }
 
