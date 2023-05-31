@@ -1,7 +1,7 @@
 const Checkout = require("./checkout.model");
 const Cart = require("../cart/cart.model");
 
-function addBill(req) {
+async function addBill(req) {
   bill = new Checkout({
     token: req.cookies.cartToken,
     cusName: req.body.cusName,
@@ -20,14 +20,19 @@ function addBill(req) {
     bill.Bill.push({ productTitle, quantity, cartId });
   }
   console.log("Đây là bill thanh toán xuât ra------", bill);
+  await bill.save();
 }
 
-// async function setIsBoughtNull(req) {
-//   for (let i = 0; i < req.body.cartId.length; i++) {
-//     await Cart.findByIdAndUpdate(req.body.cartId[i], { isBought: true });
-//   }
-// }
+async function setIsBoughtNull(req) {
+  console.log("checkout.service /checkout :", req.body);
+  let doiSo = req.body.cartId.length;
+  for (let i = 0; i < doiSo; i++) {
+    let temp = req.body.cartId[i];
+     await Cart.findByIdAndUpdate(temp, { isBought: true });
+  }
+}
+
 module.exports = {
   addBill,
-  // setIsBoughtNull,
+  setIsBoughtNull,
 };
