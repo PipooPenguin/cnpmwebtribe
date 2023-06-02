@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/admin_styles.css" />
+    <script src="js/admin_script.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="/js/pending.js"></script>
+  </head>
+
+  <body>
+    <!--header section-->
+
+    <!--header section-->
+    <%- include('./partials/headersadminsection.ejs')%>
+    <!-- admin dashboard section starts  -->
+
+    <section class="dashboard">
+      <h1 class="heading">dashboard</h1>
+
+      <div class="box-container">
+
+
+        <div class="box" >
+          <h3><span>$</span>total_pending<span>/-</span></h3>
+          <p id="pending">total pendings</p>
+          <a href="/checkouts?q=pending" class="btn">see orders</a>
+        </div>
+
+        <div class="box" >
+          <h3><span>$</span>total_completes<span>/-</span></h3>
+          <p id="complete">total completes</p>
+          <a href="/checkouts?q=complete" class="btn">see orders</a>
+        </div>
+
+        <div class="box" >
+          <h3>numbers_of_orders</h3>
+          <p id="total">total orders</p>
+          <a href="/checkouts?q=all" class="btn">see orders</a>
+        </div>
+
+        <div class="box">
+          <h3>numbers_of_products</h3>
+          <p id="products">products added</p>
+          <a href="/product" class="btn">see products</a>
+        </div>
+
+       
+
+      
+      </div>
+    </section>
+
+    <!-- admin dashboard section ends -->
+
+    <!-- custom js file link  -->
+  </body>
+</html>
