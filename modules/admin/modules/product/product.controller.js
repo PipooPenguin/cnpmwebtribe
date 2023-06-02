@@ -15,5 +15,15 @@ router.get("/full", async (req, res) => {
     res.json(dish.length);
   });
 
+  router.post("/add", async (req,res)=>{
+    console.log("admin product.controller GET /full:", req.body);
+    const dish = new Dish(req.body);
+    await dish.save();
+    res.redirect(`/product`)
+  })
+
+  router.get("/update",(req,res)=>{
+    console.log("admin product.controller GET /full:", checkout.length);
+  })
 
 module.exports = router;

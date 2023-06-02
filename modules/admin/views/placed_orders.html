@@ -34,17 +34,21 @@
       <p> email : <span><%= c.email %></span> </p>
       <p> number : <span><%= c.pNumber %></span> </p>
       <p> address : <span><%= c.address[0].adrss %>, <%= c.address[0].ward %>,<%= c.address[0].district %>, <%= c.address[0].city %></p>
-      <p> total products : <span>total_products</p>
-      <p> total price : <span>$total_price/-</span> </p>
-      <p> payment method : method'</p>
-      <form action="" method="POST">
-         <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-         <select name="payment_status" class="drop-down" required>
+      <p> 
+         orders: <% for( let b of c.Bill) { %>
+         <span><%= b.productTitle %> (<%= b.quantity %>)</span>
+         <% } %>
+       </p>
+      <p> total price : <span><%= c.total %></span> </p>
+      <p> payment method : <%= c.method %></p>
+      <form action="/update?q=<%= c.status %>&_method=PUT" method="POST">
+         <input type="hidden" name="id" value="<%= c.id %>">
+         <select name="status" class="drop-down" required>
             <option value="pending" <%= c.status == 'pending' ? "selected" : ""%>>pending</option>
-            <option value="completed" <%= c.status == 'complete' ? "selected" : ""%>>complete</option>
+            <option value="complete" <%= c.status == 'complete' ? "selected" : ""%>>complete</option>
          </select>
          <div class="flex-btn">
-            <input type="submit" value="update" class="btn" name="update_payment">
+            <input type="submit" value="update" class="btn" name="update_payment" >
          </div>
       </form>
    </div>

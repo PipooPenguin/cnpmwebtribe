@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Checkout = require("../../../checkout/checkout.model");
 
-
 router.get("/", async (req, res) => {
   const checkout = await Checkout.find({});
   console.log("admin dashboard.controller router.get /", checkout);
@@ -10,7 +9,10 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/checkouts", async (req, res) => {
-  console.log("admin dashboard.controller router.get /checkouts", req.query.q=="all");
+  console.log(
+    "admin dashboard.controller router.get /checkouts",
+    req.query.q == "all"
+  );
   const { q } = req.query;
   let checkout = [];
 
@@ -22,7 +24,7 @@ router.get("/checkouts", async (req, res) => {
   } else {
     checkout = await Checkout.find({ status: q });
   }
-  // console.log(checkout);
+  console.log(checkout);
   res.render("placed_orders.html", { checkout });
 });
 router.get("/pending", async (req, res) => {
@@ -35,5 +37,6 @@ router.get("/full", async (req, res) => {
   console.log("admin dashboard.controller GET /full:", checkout.length);
   res.json(checkout.length);
 });
+
 
 module.exports = router;

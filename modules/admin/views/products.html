@@ -23,25 +23,25 @@
 
 <!-- add products section starts  -->
 <section class="add-products">
-   <form action="/menu" method="POST">
+   <form action="/product/add" method="POST">
       <h3>add product</h3>
       <div>
 
-          <input type="text" required placeholder="enter product name" name="dish[title]" maxlength="100" class="box">
+          <input type="text" required placeholder="enter product name" name="title" maxlength="100" class="box">
       </div>
       <div>
          <!-- <label for="price">price</label>
          <input type="text" id="price" name="dish[price]"> -->
-         <input type="number" min="0" max="9999999999" required placeholder="enter product price" name="dish[price]" onkeypress="if(this.value.length == 10) return false;" class="box"
+         <input type="number" min="0" max="9999999999" required placeholder="enter product price" name="price" onkeypress="if(this.value.length == 10) return false;" class="box"
      </div>
-     <select name="dish[type]" class="box" >
+     <select name="type" class="box" >
       <option value="" disabled selected>select category --</option>
       <option value="maindish">main dish</option>
       <option value="fastfood">fast food</option>
       <option value="drinks">drinks</option>
       <option value="desserts">desserts</option>
    </select>
-   <input type="text"  placeholder="enter image URL" name="dish[image]" maxlength="100" class="box">
+   <input type="text"  placeholder="enter image URL" name="image" maxlength="100" class="box" value="images_upload/drinks_1.png">
       <button class="btn">Add dish</button>
    </form>
 </section>
@@ -57,14 +57,14 @@
  
  <!-- show products section starts  -->
 
-<%  for(let d of dish){ %>
-   <section class="show-products" style="padding-top: 0;">
 
+   <section class="show-products" style="padding-top: 0;">
       <div class="box-container">
    
+         <%  for(let d of dish){ %>
       
       <div class="box">
-         <img src="../<%= d.image %>" alt="">
+         <img src="<%= d.image %>" alt="">
          <div class="flex">
             <div class="price"><span>vnd</span><%= d.price %><span>/-</span></div>
             <div class="category"><%= d.type %></div>
@@ -72,16 +72,16 @@
          <div class="name"><%= d.title %></div>
          <div class="flex-btn">
          
-            <a class="option-btn" href="/menu/<%= d.id %>/edit">Update</a>
+            <a class="option-btn" href="/product/update?id=<%= d.id %>/edit">Update</a>
             <form action="/menu/<%=d._id%>?_method=DELETE" method="POST" >
                <button class="delete-btn" onclick="return confirm('delete this product?');">Delete</button>
            </form> 
            
          </div>
        </div>
-   
+       <% } %> 
    </section>
-<% } %>
+
 
 <!-- <h1>Edit dishes</h1>
     <form action="/menu/dish._id?_method=PUT" method="POST">
