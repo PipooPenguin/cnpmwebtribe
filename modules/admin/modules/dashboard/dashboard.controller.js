@@ -25,7 +25,7 @@ router.get("/checkouts", async (req, res) => {
     checkout = await Checkout.find({ status: q });
   }
   console.log(checkout);
-  res.render("placed_orders.html", { checkout });
+  res.render("placed_orders.html", { checkout ,q});
 });
 router.get("/pending", async (req, res) => {
   const checkout = await Checkout.find({ status: "pending" });
@@ -38,5 +38,12 @@ router.get("/full", async (req, res) => {
   res.json(checkout.length);
 });
 
-
+router.put("/update", async (req, res) => {
+  console.log("dashboard dashboard.controller PUT /update:", req.body);
+  const{q}=req.query
+const {id,status}=req.body
+  await Checkout.findByIdAndUpdate(id, { status:status });
+   res.redirect(`/checkouts?q=${q}`);
+});
+// /update?q=<%= c.status %>&_method=PUT"
 module.exports = router;

@@ -72,8 +72,8 @@
          <div class="name"><%= d.title %></div>
          <div class="flex-btn">
          
-            <a class="option-btn" href="/product/update?id=<%= d.id %>/edit">Update</a>
-            <form action="/menu/<%=d._id%>?_method=DELETE" method="POST" >
+            <a class="option-btn" href="/product/update?id=<%= d.id %>">Update</a>
+            <form action="/product/<%=d._id%>?_method=DELETE" method="POST" >
                <button class="delete-btn" onclick="return confirm('delete this product?');">Delete</button>
            </form> 
            
