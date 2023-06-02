@@ -20,7 +20,7 @@ const checkoutSchema = new Schema({
   },
   status: {
     type: String,
-    default: "Pending"
+    default: "pending"
   }
 });
 
