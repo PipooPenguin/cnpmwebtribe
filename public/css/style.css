@@ -514,9 +514,9 @@ section {
     background-color: var(--red);
     color: var(--white);
     border: var(--border);
-    line-height: 4rem;
-    height: 4.3rem;
-    width: 4.5rem;
+    line-height: 3rem;
+    height: 3rem;
+    width: 3rem;
     cursor: pointer;
     font-size: 2rem;
 }
@@ -818,7 +818,7 @@ section {
 .checkout form .user-info p {
     font-size: 2rem;
     line-height: 1.5;
-    padding: 1rem 0;
+    padding: 0 0;
 }
 
 .checkout form .user-info p i{

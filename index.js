@@ -8,8 +8,7 @@ const menu = require("./modules/menu/menu.controller");
 const category = require("./modules/category/category.controller");
 const user = require("./modules/user/user.controller");
 const cart = require("./modules/cart/cart.controller");
-const order = require("./modules/order/order.controller");
-const payment = require("./modules/payment/payment.controller");
+const checkout = require("./modules/checkout/checkout.controller");
 const staticpage = require("./modules/staticpage/staticfile.controller");
 
 const { engine } = require("express-handlebars");
@@ -34,8 +33,7 @@ app.use("/menu", menu);
 app.use("/category", category);
 app.use("/user", user);
 app.use("/cart", cart);
-app.use("/orders", order);
-app.use("/payment", payment);
+app.use("/checkout", checkout);
 
 app.listen(3000, (req, res) => {
   console.log("App is listening on port 3000");

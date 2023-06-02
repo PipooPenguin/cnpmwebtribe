@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>ORDERS</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -27,33 +27,22 @@
       <h1 class="title">your orders</h1>
 
       <div class="box-container">
+        <% for(let c of Checkout ) { %>
         <div class="box">
-          <p>placed on: <span>5-18-2023</span></p>
-          <p>name: <span>viet dung</span></p>
-          <p>number: <span>012346789</span></p>
-          <p>email: <span>dungviet2k3@gmail.com</span></p>
-          <p>address: <span>123 tran phu, phuong thanh cong, tp BMT</span></p>
+          <p>placed on: <span><%=  c.createdAt %></span></p>
+          <p>name: <span><%= c.cusName %></span></p>
+          <p>number: <span><%= c.pNumber %></span></p>
+          <p>email: <span><%= c.email %></span></p>
+          <p>address: <span><%= c.address[0].adrss %>, <%= c.address[0].ward %>, <%= c.address[0].city %></span></p>
           <p>
-            your orders:
-            <span>main dish 1 (1) - desserts 1 (1) - drinks 1 (1) </span>
+            your orders: <% for( let b of c.Bill) { %>
+            <span><%= b.productTitle %> (<%= b.quantity %>)</span>
+            <% } %>
           </p>
           <p>payment method: <span>cash on delivery</span></p>
-          <p>payment status: <span style="color: var(--red);">pending</span></p>
+          <p>payment status: <span style="color: var(--red);"><%= c.status %></span></p>
         </div>
-
-        <div class="box">
-          <p>placed on: <span>5-18-2023</span></p>
-          <p>name: <span>viet dung</span></p>
-          <p>number: <span>012346789</span></p>
-          <p>email: <span>dungviet2k3@gmail.com</span></p>
-          <p>address: <span>123 tran phu, phuong thanh cong, tp BMT</span></p>
-          <p>
-            your orders:
-            <span>main dish 1 (1) - desserts 1 (1) - drinks 1 (1) </span>
-          </p>
-          <p>payment method: <span>cash on delivery</span></p>
-          <p>payment status: <span style="color: var(--red);">pending</span></p>
-        </div>
+        <% } %>
       </div>
     </section>
 
@@ -61,26 +50,26 @@
     <footer class="footer">
       <section class="grid">
         <div class="box">
-          <img src="images/email.png" alt="" />
+          <img src="/images/email.png" alt="" />
           <h3>our email</h3>
           <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
           <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
         </div>
 
         <div class="box">
-          <img src="images/alarm-clock.png" alt="" />
+          <img src="/images/alarm-clock.png" alt="" />
           <h3>opening hours</h3>
           <p>10:00am to 14:00pm 20:00pm to 24:00pm</p>
         </div>
 
         <div class="box">
-          <img src="images/placeholder.png" alt="" />
+          <img src="/images/placeholder.png" alt="" />
           <h3>our address</h3>
           <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
         </div>
 
         <div class="box">
-          <img src="images/phone-call.png" alt="" />
+          <img src="/images/phone-call.png" alt="" />
           <h3>our number</h3>
           <a href="tel:123456789">123-456-789</a>
           <a href="tel:113456789">113-456-789</a>
@@ -94,6 +83,5 @@
     <!--footer-->
 
     <!--custom js file link-->
-
   </body>
 </html>
