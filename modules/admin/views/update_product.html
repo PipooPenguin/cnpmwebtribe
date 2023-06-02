@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>update product</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/admin_styles.css">
+
+</head>
+<body>
+
+  <!--header section-->
+  <%- include('../partials/headersadminsection.ejs')%>
+  <!-- admin dashboard section starts  -->
+
+<!-- update product section starts  -->
+
+<section class="update-product">
+
+   <h1 class="heading">update product</h1>
+
+   <form action="/menu/<%=dish._id%>?_method=PUT" method="POST" >
+      <img src="../../<%=dish.image%>" alt="">
+      <div>
+         <span>enter product name</span>
+          <input type="text" id="title" name="d[title]" value="<%=dish.title %>" maxlength="100" class="box">
+      </div>
+      <div>
+         <span>enter price</span>
+          <input type="text" id="title" name="d[price]" value="<%=dish.price %>" maxlength="100" class="box">
+      </div>
+      <div>
+         <span>enter catelory</span> 
+              <select type="text" name="d[type]" class="box" >
+         <option value="maindish" <%= dish.type == 'maindish' ? "selected" : "" %>>main dish </option>
+         <option value="fastfood" <%= dish.type == 'fastfood' ? "selected" : "" %>>fast food</option>
+         <option value="drinks" <%= dish.type == 'drinks' ? "selected" : "" %>>drinks</option>
+         <option value="desserts" <%= dish.type == 'desserts' ? "selected" : "" %>>desserts</option>
+      </select></div>
+      <button class="option-btn">Update</button>
+  </form>
+
+
+</section>
+
+<!-- update product section ends -->
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="../js/admin_script.js"></script>
+
+</body>
+</html>
