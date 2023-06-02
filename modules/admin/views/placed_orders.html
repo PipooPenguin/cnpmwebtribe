@@ -41,7 +41,7 @@
        </p>
       <p> total price : <span><%= c.total %></span> </p>
       <p> payment method : <%= c.method %></p>
-      <form action="/update?q=<%= c.status %>&_method=PUT" method="POST">
+      <form action="/update?q=<%= q %>&_method=PUT" method="POST">
          <input type="hidden" name="id" value="<%= c.id %>">
          <select name="status" class="drop-down" required>
             <option value="pending" <%= c.status == 'pending' ? "selected" : ""%>>pending</option>

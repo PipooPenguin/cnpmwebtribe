@@ -45,5 +45,4 @@ const {id,status}=req.body
   await Checkout.findByIdAndUpdate(id, { status:status });
    res.redirect(`/checkouts?q=${q}`);
 });
-// /update?q=<%= c.status %>&_method=PUT"
 module.exports = router;
