@@ -8,9 +8,9 @@ $.ajax({
         type: "get",
         url: "/full",
         success: function (data) {
-            $("#complete").html(`   <h3><span>$</span>total_completes<span>/-</span></h3>
-            <p>${data-pending}/${data} orders</p>
-            <a href="placed_orders.html" class="btn">see orders</a>`);
+            $("#complete").html(`   
+            ${data-pending}/${data} orders
+           `);
         }
     });
   },
@@ -25,9 +25,9 @@ $.ajax({
           type: "get",
           url: "/full",
           success: function (data) {
-              $("#3108").html(`   <h3><span>$</span><span>/-pending</span></h3>
-              <p>${pending}/${data} orders</p>
-              <a href="placed_orders.html" class="btn">see orders</a>`);
+              $("#pending").html(`   
+              ${pending}/${data} orders
+              `);
           }
       });
     },
@@ -42,10 +42,22 @@ $.ajax({
           type: "get",
           url: "/full",
           success: function (data) {
-              $("#total").html(`  <h3>numbers_of_orders</h3>
-              <p>${data} orders</p>
-              <a href="placed_orders.html" class="btn">see orders</a>`);
+              $("#total").html(`  
+              ${data} orders
+             `);
           }
       });
     },
+  });
+  $.ajax({
+    url: "product/full",
+    type: "get",
+    success: function (result) {
+
+              $("#products").html(`   
+               ${result} products
+              `);
+          
+      }
+    
   });

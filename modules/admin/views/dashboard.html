@@ -30,53 +30,35 @@
       <h1 class="heading">dashboard</h1>
 
       <div class="box-container">
-        <div class="box">
-          <h3>welcome!</h3>
-          <p>name</p>
-          <a href="update_profile.html" class="btn">update profile</a>
+
+
+        <div class="box" >
+          <h3><span>$</span>total_pending<span>/-</span></h3>
+          <p id="pending">total pendings</p>
+          <a href="/checkouts?q=pending" class="btn">see orders</a>
         </div>
 
-        <div class="box" id="3108">
-          <h3><span>$</span><span>/-</span></h3>
-          <p>total pendings</p>
-          <a href="placed_orders.html" class="btn">see orders</a>
-        </div>
-
-        <div class="box" id="complete">
+        <div class="box" >
           <h3><span>$</span>total_completes<span>/-</span></h3>
-          <p>total completes</p>
-          <a href="placed_orders.html" class="btn">see orders</a>
+          <p id="complete">total completes</p>
+          <a href="/checkouts?q=complete" class="btn">see orders</a>
         </div>
 
-        <div class="box" id="total">
+        <div class="box" >
           <h3>numbers_of_orders</h3>
-          <p>total orders</p>
-          <a href="placed_orders.html" class="btn">see orders</a>
+          <p id="total">total orders</p>
+          <a href="/checkouts?q=all" class="btn">see orders</a>
         </div>
 
         <div class="box">
           <h3>numbers_of_products</h3>
-          <p>products added</p>
-          <a href="products.html" class="btn">see products</a>
+          <p id="products">products added</p>
+          <a href="/product" class="btn">see products</a>
         </div>
 
-        <div class="box">
-          <h3><?= $numbers_of_users; ?></h3>
-          <p>users accounts</p>
-          <a href="users_accounts.html" class="btn">see users</a>
-        </div>
+       
 
-        <div class="box">
-          <h3>numbers_of_admins</h3>
-          <p>admins</p>
-          <a href="admin_accounts.html" class="btn">see admins</a>
-        </div>
-
-        <div class="box">
-          <h3>numbers_of_messages</h3>
-          <p>new messages</p>
-          <a href="messages.html" class="btn">see messages</a>
-        </div>
+      
       </div>
     </section>
 

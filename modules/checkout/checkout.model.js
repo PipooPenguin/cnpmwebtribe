@@ -8,7 +8,10 @@ const moment = require("moment");
 const checkoutSchema = new Schema({
   token: String,
   cusName: String,
-  email: String,
+  email:{
+    type: String,
+    default: "not include",
+  } ,
   pNumber: String,
   address: [{ adrss: String,city: String, district: String, ward: String }],
   method: String,
