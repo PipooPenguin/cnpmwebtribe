@@ -5,7 +5,10 @@ const ejs = require("ejs");
 const mongodb = require("../mongodb/mongodb.service");
 const dashboard = require("./modules/dashboard/dashboard.controller.js");
 const product = require("./modules/product/product.controller.js");
-
+const {
+  errorHandler,
+  errorMongoose,
+} = require("../../modules/error/error.controller");
 
 const { engine } = require("express-handlebars");
 const methodOverride = require("method-override");
@@ -22,11 +25,12 @@ app.use(methodOverride("_method"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname,'..','..', "public")));
+app.use(express.static(path.join(__dirname, "..", "..", "public")));
+
 
 app.use("/", dashboard);
- app.use('/product',product);
-// app.use('/order')
+app.use("/product", product);
+app.use(errorMongoose, errorHandler);
 
 app.listen(80, (req, res) => {
   console.log("App is listening on port 80");

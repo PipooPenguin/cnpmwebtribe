@@ -30,14 +30,14 @@
 
       <div class="cart-total">
         <p>cart total : <span><%= total %> vnd</span></p>
-        <a href="cart/checkout" class="btn">proceed to checkout</a>
+        <a href="/checkout" class="btn">proceed to checkout</a>
       </div>
 
       <div class="box-container">
-        <% for(let bill of Bill) { %>
+        <% for(let item of Cart) { %>
           
         <form action="/cart/editcart?_method=PATCH" method="POST" class="box">
-          <a href='/menu/<%= bill._doc._id %>' alt=''>             <img src="/<%= bill._doc.image %>" alt="" />
+          <a href='/menu/<%= item.products._id %>' alt=''>             <img src="/<%= item.products.image %>" alt="" />
           </a>
           
           <button
@@ -46,26 +46,26 @@
           name="qu"
           value="0"
         ></button>
-          <a href="/category?q=<%= bill._doc.type %>" class="cat"><%= bill._doc.type %></a>
-          <div class="name"><%= bill._doc.title %></div>
+          <a href="/category?q=<%= item.products.type %>" class="cat"><%= item.products.type %></a>
+          <div class="name"><%= item.products.title %></div>
           <div class="flex">
-            <div class="price"><%= bill._doc.price %> <span>vnd</span></div>
-            <input type="hidden" name="id" value="<%= bill.cid %>" />
+            <div class="price"><%= item.products.price %> <span>vnd</span></div>
+            <input type="hidden" name="id" value="<%=item.products._id %>" />
 
             <input
               type="number"
-              id="quantitychange_<%= bill._doc._id %>"
+              id="quantitychange_<%=item.products._id  %>"
               name="quantity"
               class="qty"
               min="1"
               max="99"
-              value="<%= bill.q %>"
+              value="<%=item.quantity  %>"
               onkeypress="if(this.value.length == 2) return false;"
             />         
             <button
             class="fas fa-edit"
             ></button>          </div>
-          <div class="sub-total">sub total : <span><%= bill._doc.price*bill.q %> vnd</span></div>
+          <div class="sub-total">sub total : <span><%=item.products.price*item.quantity %> vnd</span></div>
         </form>
         <% } %>
         

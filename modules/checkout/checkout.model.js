@@ -4,27 +4,31 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const moment = require("moment");
 
-
 const checkoutSchema = new Schema({
   token: String,
   cusName: String,
-  email:{
+  email: {
     type: String,
     default: "not include",
-  } ,
+  },
   pNumber: String,
-  address: [{ adrss: String,city: String, district: String, ward: String }],
+  address: {
+    adrss: String,
+    city: String,
+    district: String,
+    ward: String,
+  },
   method: String,
   total: Number,
-  Bill: [{ cartId: String, productTitle: String, quantity: Number }],
+  Bill: [{ type : Schema.Types.ObjectId, ref: 'Cart' }],
   createdAt: {
     type: Date,
     default: Date.now,
   },
   status: {
     type: String,
-    default: "pending"
-  }
+    default: "pending",
+  },
 });
 
 // file js kết nối với file index.js thì phải có module.exports return ra cái gì đó. 'Dishes' có một chữ + viết hoa chữ cái đầu là rule của mongoose, sẽ tạo một collection(table) với tên dishes

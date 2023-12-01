@@ -2,6 +2,9 @@ console.log("addCart js");
 
 function SubForm(id) {
   console.log("id: ", id);
+  $(`#addCart_${id}`).submit(function(e) {
+
+    e.preventDefault();
   $.ajax({
     url: "/cart/add",
     type: "post",
@@ -14,22 +17,32 @@ function SubForm(id) {
     },
     
   });
-
+  $.ajax({
+    url: "/cart/all",
+    type: "get",
+    success: function (r) {
+      $("#cart").html(
+        `<i class="fas fa-shopping-cart">(${r})</i><span></span>`
+      );
+    },
+  });
+  })
 }
+
 
 $.ajax({
   url: "/cart/all",
   type: "get",
-  success: function (result) {
+  success: function (r) {
     $("#cart").html(
-      `<i class="fas fa-shopping-cart">(${result.length})</i><span></span>`
+      `<i class="fas fa-shopping-cart">(${r})</i><span></span>`
     );
   },
 });
 
-
 function SForm(id) {
   console.log("id: ", id);
+
   $.ajax({
     url: "/cart/updatequantity",
     type: "post",

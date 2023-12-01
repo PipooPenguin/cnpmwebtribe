@@ -3,17 +3,19 @@ const app = express();
 const path = require("path");
 const ejs = require("ejs");
 const mongodb = require("./modules/mongodb/mongodb.service");
-const menuSerive = require("./modules/menu/menu.service");
 const menu = require("./modules/menu/menu.controller");
 const category = require("./modules/category/category.controller");
 const user = require("./modules/user/user.controller");
 const cart = require("./modules/cart/cart.controller");
 const checkout = require("./modules/checkout/checkout.controller");
 const staticpage = require("./modules/staticpage/staticfile.controller");
+const search = require("./modules/search/search.controller");
+const {errorHandler,errorMongoose} = require("./modules/error/error.controller");
 
 const { engine } = require("express-handlebars");
 const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
+
 
 mongodb.connect();
 
@@ -34,7 +36,12 @@ app.use("/category", category);
 app.use("/user", user);
 app.use("/cart", cart);
 app.use("/checkout", checkout);
+app.use("/search", search);
+app.use("/user", user);
 
-app.listen(3000, (req, res) => {
+app.use(errorMongoose,errorHandler)
+
+
+app.listen(3001, (req, res) => {
   console.log("App is listening on port 3000");
 });

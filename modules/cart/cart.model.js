@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 
 const CartsSchema = new Schema({
   cartToken: String,
-  productId: String,
+  products: { type : Schema.Types.ObjectId, ref: 'Dishe' },
   quantity: Number,
   createdAt: {
     type: Date,

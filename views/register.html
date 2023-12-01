@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>REGISTER</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -19,16 +19,18 @@
     <!--header section-->
 
     <section class="form-container">
-      <form action="" method="post">
+      <form action=""  id="userRegister" method="POST">
         <h3>register now</h3>
         <input
-          type="text"
-          name="name"
-          required
-          placeholder="enter your email"
-          class="box"
-          maxlength="50"
-        />
+        type="number"
+        name="number"
+        required
+        placeholder="enter your number"
+        class="box"
+        maxlength="50"
+        oninput="this.value = this.value.replace(/\s/g, '')"
+      />
+      <input
         <input
           type="email"
           name="email"
@@ -40,18 +42,9 @@
         />
         <input
           type="password"
-          name="pass"
+          name="password"
           required
           placeholder="enter your password"
-          class="box"
-          maxlength="50"
-          oninput="this.value = this.value.replace(/\s/g, '')"
-        />
-        <input
-          type="password"
-          name="cpass"
-          required
-          placeholder="confirm your password"
           class="box"
           maxlength="50"
           oninput="this.value = this.value.replace(/\s/g, '')"
@@ -65,26 +58,26 @@
     <footer class="footer">
       <section class="grid">
         <div class="box">
-          <img src="images/email.png" alt="" />
+          <img src="/images/email.png" alt="" />
           <h3>our email</h3>
           <a href="mailto:dungviet2k3@gmail.com">dungviet2k3@gmail.com</a>
           <a href="mailto:21521976@gm.uit.edu.vn">21521976@gm.uit.edu.vn</a>
         </div>
 
         <div class="box">
-          <img src="images/alarm-clock.png" alt="" />
+          <img src="/images/alarm-clock.png" alt="" />
           <h3>opening hours</h3>
           <p>10:00am to 14:00pm 20:00pm to 24:00pm</p>
         </div>
 
         <div class="box">
-          <img src="images/placeholder.png" alt="" />
+          <img src="/images/placeholder.png" alt="" />
           <h3>our address</h3>
           <a href="#">178 Pasteur. P .Bến Nghé, Q1, TP. HCM</a>
         </div>
 
         <div class="box">
-          <img src="images/phone-call.png" alt="" />
+          <img src="/images/phone-call.png" alt="" />
           <h3>our number</h3>
           <a href="tel:123456789">123-456-789</a>
           <a href="tel:113456789">113-456-789</a>
@@ -98,6 +91,12 @@
     <!--footer-->
 
     <!--custom js file link-->
-
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/cookie.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/userRegister.js"></script>
+    
   </body>
 </html>
