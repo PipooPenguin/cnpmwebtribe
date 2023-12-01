@@ -1,7 +1,10 @@
 const Checkout = require("./checkout.model");
+const cart = require("../cart/cart.service");
 const Cart = require("../cart/cart.model");
 
 async function addBill(req) {
+  console.log("checkout.service addBill :");
+  let {adrss,ward,district,city}= req.body;
   bill = new Checkout({
     token: req.cookies.cartToken,
     cusName: req.body.cusName,
@@ -9,41 +12,37 @@ async function addBill(req) {
     pNumber: req.body.pNumber,
     method: req.body.method,
     total: req.body.total,
+    address: {adrss : adrss,city: city,district:district,ward: ward},
   });
-  let productTitle = 0;
-  let quantity = 0;
-  let cartId = 0;
-  let adrss=req.body.adrss;
-  let ward=req.body.ward;
-  let district=req.body.district;
-  let city=req.body.city;
+  const Bill = await cart.findDishByCart(req.cookies)
+  // let productTitle = 0;
+  // let quantity = 0;
+  // let cartId = 0;
+  // if (typeof req.body.cartId === "string") {
+  //   productTitle = req.body.Billtitle;
+  //   quantity = req.body.Billquantity;
+  //   cartId = req.body.cartId;
+  //   bill.Bill.push({ productTitle, quantity, cartId });
+  // } else {
+  //   for (let i = 0; i < req.body.Billtitle.length; i++) {
+  //     productTitle = req.body.Billtitle[i];
+  //     quantity = req.body.Billquantity[i];
+  //     cartId = req.body.cartId[i];
+  //     bill.Bill.push({ productTitle, quantity, cartId });
+  //   }
+  // }
 
-  bill.address.push({ adrss,ward,district,city});
-  if (typeof req.body.cartId === "string") {
-    productTitle = req.body.Billtitle;
-    quantity = req.body.Billquantity;
-    cartId = req.body.cartId;
-    bill.Bill.push({ productTitle, quantity, cartId });
-  } else {
-    for (let i = 0; i < req.body.Billtitle.length; i++) {
-      productTitle = req.body.Billtitle[i];
-      quantity = req.body.Billquantity[i];
-      cartId = req.body.cartId[i];
-      bill.Bill.push({ productTitle, quantity, cartId });
-    }
-  }
-
-  console.log("Đây là bill thanh toán xuât ra------", bill);
+  console.log("Bill------", Bill);
   await bill.save();
 }
 
 async function setIsBoughtNull(req) {
-  console.log("checkout.service /checkout :", req.body);
+  console.log("checkout.service /checkout :");
   let doiSo = req.body.cartId.length;
-  console.log(
-    "typeof req.body.cartId: ------------",
-    typeof req.body.cartId === "string"
-  );
+  // console.log(
+  //   "typeof req.body.cartId: ------------",
+  //   typeof req.body.cartId === "string"
+  // );
   let temp = 0;
   if (typeof req.body.cartId === "string") {
     temp = req.body.cartId;
@@ -60,7 +59,7 @@ async function printBill(cookies) {
   const checkout = await Checkout.find({ token: cookies }).sort({
     createdAt: -1,
   });
-  console.log("bill trên trang order:", checkout);
+  // console.log("bill trên trang order:", checkout);
   return checkout;
 }
 module.exports = {

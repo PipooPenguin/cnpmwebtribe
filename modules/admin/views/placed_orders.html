@@ -33,7 +33,7 @@
       <p> name : <span><%= c.cusName %></p>
       <p> email : <span><%= c.email %></span> </p>
       <p> number : <span><%= c.pNumber %></span> </p>
-      <p> address : <span><%= c.address[0].adrss %>, <%= c.address[0].ward %>,<%= c.address[0].district %>, <%= c.address[0].city %></p>
+      <p> address : <span><%= c.address.adrss %>, <%= c.address.ward %>,<%= c.address.district %>, <%= c.address.city %></p>
       <p> 
          orders: <% for( let b of c.Bill) { %>
          <span><%= b.productTitle %> (<%= b.quantity %>)</span>
