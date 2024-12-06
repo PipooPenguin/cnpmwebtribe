@@ -1,5 +1,4 @@
 const express = require("express");
-//const Cart = require("./cart.model");
 const cart = require("./cart.service");
 const Dish = require("../menu/menu.model");
 const router = express.Router();

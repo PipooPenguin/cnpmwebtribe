@@ -1,14 +1,19 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
+dotenv.config({ path: ".env" });
 function connect() {
   mongoose
-    .connect("mongodb://127.0.0.1/fooddeli")
+    .connect(process.env.MongoDB_URL+process.env.database_name, {})
     .then(() => {
       console.log("connect mongodb success!!");
     })
     .catch((err) => {
-      console.log("connect mongodb error!!");
+      console.log("connect mongodb error!!, url: ",process.env.MongoDB_URL+process.env.database_name);
     });
 }
 
 module.exports = { connect };
+
+
+
