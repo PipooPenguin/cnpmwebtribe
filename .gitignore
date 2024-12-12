@@ -1,3 +1,4 @@
 node_modules
-front-end/images*
 .env
+package-lock.json
+.idea

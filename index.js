@@ -42,6 +42,6 @@ app.use("/user", user);
 app.use(errorMongoose,errorHandler)
 
 
-app.listen(3001, (req, res) => {
+app.listen(3000, (req, res) => {
   console.log("App is listening on port 3000");
 });

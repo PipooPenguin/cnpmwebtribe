@@ -1,0 +1,9 @@
+.gitignore
+.idea
+seed
+package-lock.json
+docker
+docker-compose.yml
+Dockerfile
+node_modules
+.dockerignore
