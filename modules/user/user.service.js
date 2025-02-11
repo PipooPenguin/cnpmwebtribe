@@ -1,6 +1,19 @@
-const User = require("./user.model")
-async function registerUser (cookie, number,email,password){
-  user = new User({ token : cookie, number: number,email: email,password:  password})
-  await user.save()
+const User = require('./user.model')
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const handlecreateuser = function (userData) {
+    console.log('user service handlecreateuser')
+    const {email, password} = userData;
+    return jwtToken = generateToken(email,password)
+
+    // Creating the user
+    // const user =User.create({ username:"username", password:"ass"});
 }
-module.exports={registerUser}
+const generateToken = function (email, password) {
+    return jwtToken = jwt.sign({ email, password }, process.env.JWT_SECRET, { expiresIn: "1h" });
+}
+module.exports= {
+    handlecreateuser,
+}
