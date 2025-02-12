@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: nodejs
     container_name: nodejs
     restart: unless-stopped
     networks:
@@ -47,14 +46,14 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/hellothanh/Documents/cnpmwebtribe/views
+      device: /root/cnpmwebtribe/views
       o: bind
   dhparam:
-  driver: local
-  driver_opts:
-    type: none
-    device: /home/hellothanh/Documents/cnpmwebtribe/views
-    o: bind
+    driver: local
+    driver_opts:
+      type: none
+      device: /root/cnpmwebtribe/dhparam
+      o: bind
 
 networks:
   app-network:
