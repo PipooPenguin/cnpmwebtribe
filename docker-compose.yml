@@ -1,29 +1,33 @@
+version: '3'
+
 services:
-  app:
-    build: 
+  nodejs:
+    build:
       context: .
       dockerfile: Dockerfile
-    container_name: webstribe_container
+    image: nodejs
+    container_name: nodejs
     restart: unless-stopped
     networks:
-      - app-networks
+      - app-network
 
   webserver:
-    image: nginx:mainline-alpine
+    image: nginx:latest
     container_name: webserver
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - web-root:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     depends_on:
-      - app
+      - nodejs
     networks:
-      - app-networks
-
+      - app-network
 
   certbot:
     image: certbot/certbot
@@ -34,11 +38,24 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot-path=/var/www/html --email hellothanh2k3@gmail.com --agree-tos --no-eff-email --staging -d huuthanh.it.com  -d www.huuthanh.it.com
+    command: certonly --webroot --webroot-path=/var/www/html --email thanh@huuthanh.it.com --agree-tos --no-eff-email --force-renewal -d huuthanh.it.com  -d www.huuthanh.it.com 
+
 volumes:
   certbot-etc:
   certbot-var:
   web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/hellothanh/Documents/cnpmwebtribe/views
+      o: bind
+  dhparam:
+  driver: local
+  driver_opts:
+    type: none
+    device: /home/hellothanh/Documents/cnpmwebtribe/views
+    o: bind
+
 networks:
-  app-networks:
+  app-network:
     driver: bridge
