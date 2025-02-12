@@ -19,7 +19,7 @@
     <!--header section-->
 
     <section class="form-container">
-      <form id="formLogin" action="/user/login/check"    method="post">
+      <form id="formLogin"  method="post">
         <h3>login now</h3>
         <input
           type="email"
@@ -78,6 +78,24 @@
         created by <span>me and my team</span> | all rights
       </div>
     </footer>
+    <script>
+      $(document).ready(function(){
+        $("#formLogin").on("submit",function (e){
+          e.preventDefault()
+          const formData = $(this).serialize();
+          console.log("ajax login call, form data:",formData);
+          $.ajax({
+            type: "POST",
+            data: formData,
+            url: "/user/handlelogin",
+            success: function(res){
+              console.log("call to server success /user/handlelogin, response: ", res.token)
+            }
+          })
+        })
+      })
+
+    </script>
     <!--footer-->
 
     <!--custom js file link-->

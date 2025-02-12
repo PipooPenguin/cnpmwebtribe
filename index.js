@@ -37,7 +37,6 @@ app.use("/user", user);
 app.use("/cart", cart);
 app.use("/checkout", checkout);
 app.use("/search", search);
-app.use("/user", user);
 
 app.use(errorMongoose,errorHandler)
 
