@@ -55,13 +55,13 @@
             const formData = $(this).serialize();
             console.log("register ajax ready, formData: ", formData);
             $.ajax({
-              url: "/user/handlecreateuser",
+              url: "/user/handlesignup",
               type: "POST",
               data: formData,
               success: function (response) {
                 // $("#response").text("Success: " + response.message);
                 console.log("register ajax sucess, token send back: ", response);
-                // $("#userRegister")[0].reset();
+                window.location.href = response.redirect;
               },
               error: function (response) {
                 // $("#response").text("Success: " + response.message);
