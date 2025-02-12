@@ -1,0 +1,44 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: webstribe_container
+    restart: unless-stopped
+    networks:
+      - app-networks
+
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - web-root:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    depends_on:
+      - app
+    networks:
+      - app-networks
+
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot-path=/var/www/html --email hellothanh2k3@gmail.com --agree-tos --no-eff-email --staging -d huuthanh.it.com  -d www.huuthanh.it.com
+volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
+networks:
+  app-networks:
+    driver: bridge
